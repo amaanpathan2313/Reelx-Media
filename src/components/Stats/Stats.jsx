@@ -5,10 +5,10 @@ import CountUp from 'react-countup'
 import './Stats.css'
 
 const stats = [
-  { number: 500, suffix: '+', label: 'Brands Served', icon: '🏆', desc: 'Successful campaigns' },
-  { number: 20, suffix: 'M+', label: 'Total Views', icon: '👁️', desc: 'Across all platforms' },
+  { number: 40, suffix: '+', label: 'Brands Served', icon: '🏆', desc: 'Successful campaigns' },
+  { number: 4000, suffix: '+', label: 'Videos Delivered', icon: '📸', desc: 'Across all platforms' },
   { number: 340, suffix: '%', label: 'Avg Revenue Growth', icon: '📈', desc: 'For our clients' },
-  { number: 3, suffix: '+', label: 'Years Experience', icon: '⚡', desc: 'In video marketing' },
+  { number: 5, suffix: '+', label: 'Years Experience', icon: '⚡', desc: 'In social media marketing' },
 ]
 
 const Stats = () => {

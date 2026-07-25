@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
+import logoImg from '../../assets/logo-transparent.png'
 import './Hero.css'
 
 const Hero = () => {
@@ -30,8 +31,30 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <span className="hero__badge-dot" />
-            <span>Performance Video Agency</span>
+            <div className="hero__badge-icon-box">
+              <svg
+                className="hero__badge-calendar-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="3" ry="3" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+                <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" strokeWidth="2.5" />
+              </svg>
+            </div>
+            <span className="hero__badge-text">
+              <span className="hero__badge-accent">5+ Years</span> of Excellence
+            </span>
+            <span className="hero__badge-divider">•</span>
+            <span className="hero__badge-sub">Performance Video Agency</span>
           </motion.div>
 
           <h1 className="hero__heading">
@@ -94,15 +117,21 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
           >
-            <a href="#cta" className="btn-primary hero__btn-main" id="hero-cta-primary">
+            <a
+              href="https://wa.me/919321434984"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary hero__btn-main"
+              id="hero-cta-primary"
+            >
               <span>Book a Free Strategy Call</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
             <a href="#portfolio" className="btn-outline hero__btn-secondary" id="hero-cta-secondary">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polygon points="5 3 19 12 5 21 5 3"/>
+                <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
               <span>See Our Work</span>
             </a>
@@ -116,15 +145,15 @@ const Hero = () => {
             transition={{ delay: 1.1, duration: 0.6 }}
           >
             <div className="hero__trust-avatars">
-              {[1,2,3,4].map(i => (
+              {[1, 2, 3, 4].map(i => (
                 <div key={i} className="hero__trust-avatar" style={{ background: `hsl(${260 + i * 30}, 70%, 50%)` }}>
-                  {['A', 'B', 'C', 'D'][i-1]}
+                  {['A', 'B', 'C', 'D'][i - 1]}
                 </div>
               ))}
             </div>
             <div className="hero__trust-text">
               <div className="hero__trust-stars">★★★★★</div>
-              <span>Trusted by 500+ brands worldwide</span>
+              <span>Trusted by 40+ brands worldwide</span>
             </div>
           </motion.div>
         </motion.div>
@@ -142,15 +171,14 @@ const Hero = () => {
               <div className="hero__video-screen">
                 <div className="hero__video-play">
                   <svg viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3"/>
+                    <polygon points="5 3 19 12 5 21 5 3" />
                   </svg>
                 </div>
                 <div className="hero__video-bar">
                   <div className="hero__video-bar-fill" />
                 </div>
                 <div className="hero__video-overlay-text">
-                  <span>ReelX Media</span>
-                  <small>Performance Content</small>
+                  <img src={logoImg} alt="ReelX Media Logo" className="hero__video-logo-img" />
                 </div>
               </div>
 
@@ -163,7 +191,8 @@ const Hero = () => {
                 <div className="hero__float-icon">📈</div>
                 <div>
                   <div className="hero__float-num">+340%</div>
-                  <div className="hero__float-label">Revenue Growth</div>
+                  <div className="hero__float-label">Quarterly
+                    Revenue Growth</div>
                 </div>
               </motion.div>
 
@@ -174,7 +203,7 @@ const Hero = () => {
               >
                 <div className="hero__float-icon">🎯</div>
                 <div>
-                  <div className="hero__float-num">500+</div>
+                  <div className="hero__float-num">40+</div>
                   <div className="hero__float-label">Brands Served</div>
                 </div>
               </motion.div>
@@ -184,10 +213,10 @@ const Hero = () => {
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
               >
-                <div className="hero__float-icon">⚡</div>
+                <div className="hero__float-icon">📸</div>
                 <div>
-                  <div className="hero__float-num">20M+</div>
-                  <div className="hero__float-label">Total Views</div>
+                  <div className="hero__float-num">4000+</div>
+                  <div className="hero__float-label">Reels Delivered</div>
                 </div>
               </motion.div>
             </div>

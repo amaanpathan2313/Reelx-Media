@@ -1,4 +1,5 @@
 import React from 'react'
+import logoImg from '../../assets/logo-transparent.png'
 import './Footer.css'
 
 const footerLinks = {
@@ -27,23 +28,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="footer__brand">
             <div className="footer__logo">
-              <div className="footer__logo-icon">
-                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="36" height="36" rx="10" fill="url(#footerLogoGrad)" />
-                  <path d="M10 12h8l6 6-6 6H10l6-6-6-6z" fill="white" opacity="0.9"/>
-                  <path d="M20 12h6l-6 6 6 6h-6l6-6-6-6z" fill="white" opacity="0.5"/>
-                  <defs>
-                    <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#8b5cf6"/>
-                      <stop offset="1" stopColor="#06b6d4"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div className="footer__logo-text">
-                REEL<span>X</span>
-                <small>MEDIA</small>
-              </div>
+              <img src={logoImg} alt="ReelX Media Logo" className="footer__logo-img" />
             </div>
 
             <p className="footer__tagline">

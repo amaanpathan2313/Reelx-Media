@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import Stats from './components/Stats/Stats'
+import BeforeAfter from './components/BeforeAfter/BeforeAfter'
+import PhotoResults from './components/PhotoResults/PhotoResults'
 import About from './components/About/About'
 import Services from './components/Services/Services'
 import HowWeWork from './components/HowWeWork/HowWeWork'
@@ -22,13 +24,15 @@ function App() {
       <main>
         <Hero />
         <Stats />
-        <About />
+        <BeforeAfter />
+        <PhotoResults />
+        <Testimonials />
+        <Portfolio />
         <Services />
         <HowWeWork />
-        <Results />
-        <Portfolio />
+        {/* <Results /> */}
         <Brands />
-        <Testimonials />
+        <About />
         <CtaBanner />
       </main>
       <Footer />

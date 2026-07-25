@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import Tilt from 'react-parallax-tilt'
+import logoImg from '../../assets/logo-transparent.png'
 import './About.css'
 
 const features = [
@@ -82,8 +83,7 @@ const About = () => {
 
               {/* ReelX logo watermark */}
               <div className="about__watermark">
-                <span>REEL<span>X</span></span>
-                <small>MEDIA</small>
+                <img src={logoImg} alt="ReelX Media Logo" className="about__watermark-img" />
               </div>
             </div>
           </Tilt>

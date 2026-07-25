@@ -169,31 +169,15 @@
   position: absolute;
   top: -15px;
   left: 20px;
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
 }
 
-.about__watermark span {
-  font-family: var(--font-primary);
-  font-size: 18px;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 2px;
-}
-
-.about__watermark span span {
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.about__watermark small {
-  font-size: 8px;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.3);
-  font-family: 'Inter', sans-serif;
+.about__watermark-img {
+  height: 75px;
+  width: auto;
+  object-fit: contain;
+  margin: -12px 0;
+  filter: invert(1) brightness(1.2) opacity(0.8);
+  mix-blend-mode: screen;
 }
 
 /* Rings */

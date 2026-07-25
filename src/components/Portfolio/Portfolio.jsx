@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './Portfolio.css'
 
-const categories = ['All', 'YouTube Ads', 'Reels/TikTok', 'Brand Films', 'UGC', 'Product']
+const categories = ['All', 'Resorts / Villas', 'Real State', 'Health Care', 'Promotional Videos']
 
 const portfolioItems = [
   { id: 1, title: 'FitFlow Energy Drink', category: 'YouTube Ads', views: '2.4M', roas: '8.5x', color: '#8b5cf6', emoji: '⚡' },
@@ -41,7 +41,7 @@ const Portfolio = () => {
             Work That <span className="gradient-text">Drives Results</span>
           </h2>
           <p className="portfolio__subheading">
-            A curated selection of campaigns that generated real revenue for our clients
+            A curated selection of campaigns that generates <br /> real revenue for your business
           </p>
         </motion.div>
 
@@ -83,7 +83,7 @@ const Portfolio = () => {
                   <div className="portfolio__emoji">{item.emoji}</div>
                   <div className="portfolio__play-btn">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                      <polygon points="5 3 19 12 5 21 5 3"/>
+                      <polygon points="5 3 19 12 5 21 5 3" />
                     </svg>
                   </div>
                   <div className="portfolio__overlay">
