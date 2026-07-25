@@ -1,0 +1,215 @@
+.testi {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.testi__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.testi__orb--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  left: -150px;
+  top: 0;
+}
+
+.testi__orb--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+  right: -100px;
+  bottom: 0;
+}
+
+.testi__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.testi__heading {
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Featured */
+.testi__featured {
+  position: relative;
+  margin-bottom: 32px;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 28px;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.testi__featured-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 28px;
+  transition: background 0.4s ease;
+}
+
+.testi__main {
+  position: relative;
+  z-index: 1;
+}
+
+.testi__quote-icon {
+  font-family: Georgia, serif;
+  font-size: 80px;
+  color: rgba(139, 92, 246, 0.3);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.testi__text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 800px;
+  margin-bottom: 36px;
+  font-style: italic;
+}
+
+.testi__author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.testi__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.testi__name {
+  font-family: var(--font-primary);
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.testi__role {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.testi__metric {
+  margin-left: auto;
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.testi__stars {
+  margin-top: 20px;
+  display: flex;
+  gap: 4px;
+}
+
+.testi__star {
+  font-size: 20px;
+  color: #fbbf24;
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
+}
+
+/* Selector Cards */
+.testi__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.testi__card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.testi__card:hover,
+.testi__card--active {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--t-color);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
+}
+
+.testi__card-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.testi__card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.testi__card-name {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testi__card-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testi__card-metric {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .testi__cards { grid-template-columns: repeat(2, 1fr); }
+  .testi__featured { padding: 40px 32px; }
+}
+
+@media (max-width: 640px) {
+  .testi__cards { grid-template-columns: 1fr; }
+  .testi__featured { padding: 28px 20px; }
+  .testi__text { font-size: 16px; }
+  .testi__metric { display: none; }
+}

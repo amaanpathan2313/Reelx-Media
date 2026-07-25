@@ -1,0 +1,116 @@
+.brands {
+  position: relative;
+  z-index: 1;
+}
+
+.brands__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.brands__tagline {
+  font-family: var(--font-primary);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.brands__sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Grid */
+.brands__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 60px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+}
+
+.brands__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.brands__logo:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.brands__logo-icon {
+  font-size: 36px;
+  filter: grayscale(0.3) drop-shadow(0 0 10px currentColor);
+  transition: filter 0.3s ease;
+}
+
+.brands__logo:hover .brands__logo-icon {
+  filter: grayscale(0) drop-shadow(0 0 16px currentColor);
+}
+
+.brands__logo-name {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.brands__logo:hover .brands__logo-name {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Bottom */
+.brands__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.brands__pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.brands__pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 10px #22d3ee;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@media (max-width: 1024px) {
+  .brands__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .brands__grid { grid-template-columns: repeat(2, 1fr); padding: 24px 16px; }
+}
+
+@media (max-width: 480px) {
+  .brands__grid { grid-template-columns: repeat(2, 1fr); }
+}
