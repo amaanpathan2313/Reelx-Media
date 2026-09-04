@@ -3,15 +3,28 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './Brands.css'
 
+import logo1 from '../../assets/client-logo/1.png'
+import logo2 from '../../assets/client-logo/2.png'
+import logo3 from '../../assets/client-logo/3.png'
+import logo4 from '../../assets/client-logo/4.png'
+import logo5 from '../../assets/client-logo/5.png'
+import logo6 from '../../assets/client-logo/6.png'
+import logo7 from '../../assets/client-logo/7.png'
+import logo8 from '../../assets/client-logo/8.png'
+import logo9 from '../../assets/client-logo/9.png'
+import logo10 from '../../assets/client-logo/10.png'
+
 const brandLogos = [
-  { name: 'TechFlow', icon: '💻', color: '#8b5cf6' },
-  { name: 'FitLife', icon: '💪', color: '#06b6d4' },
-  { name: 'LuxHome', icon: '🏠', color: '#f97316' },
-  { name: 'StyleCo', icon: '👕', color: '#ec4899' },
-  { name: 'GreenEats', icon: '🌿', color: '#10b981' },
-  { name: 'SpeedPay', icon: '⚡', color: '#fbbf24' },
-  { name: 'SkyVault', icon: '☁️', color: '#3b82f6' },
-  { name: 'VoxMedia', icon: '🎙️', color: '#a78bfa' },
+  { id: 1, src: logo1 },
+  { id: 2, src: logo2 },
+  { id: 3, src: logo3 },
+  { id: 4, src: logo4 },
+  { id: 5, src: logo5 },
+  { id: 6, src: logo6 },
+  { id: 7, src: logo7 },
+  { id: 8, src: logo8 },
+  { id: 9, src: logo9 },
+  { id: 10, src: logo10 },
 ]
 
 const Brands = () => {
@@ -42,19 +55,30 @@ const Brands = () => {
         >
           {brandLogos.map((brand, i) => (
             <motion.div
-              key={brand.name}
-              className="brands__logo"
+              key={brand.id}
+              className={`brands__logo ${brand.text ? 'brands__logo--text' : ''}`}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
               whileHover={{ scale: 1.08, y: -4 }}
             >
-              <div className="brands__logo-icon" style={{ color: brand.color }}>
-                {brand.icon}
-              </div>
-              <span className="brands__logo-name">{brand.name}</span>
+              {brand.text ? (
+                <div className="brands__text-content">{brand.text}</div>
+              ) : (
+                <img src={brand.src} alt={`Client logo ${brand.id}`} className="brands__logo-img" />
+              )}
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Stats Line */}
+        <motion.div
+          className="brands__stats-line"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          We have worked with <span className="highlight">40+ Brands</span> in the last <span className="highlight">5+ years</span>
         </motion.div>
 
         {/* Bottom CTA */}

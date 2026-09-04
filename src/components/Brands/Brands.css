@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 24px 16px;
+  padding: 32px 16px;
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -53,27 +53,33 @@
   border-color: rgba(255, 255, 255, 0.08);
 }
 
-.brands__logo-icon {
-  font-size: 36px;
-  filter: grayscale(0.3) drop-shadow(0 0 10px currentColor);
-  transition: filter 0.3s ease;
+.brands__logo-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
+  transition: filter 0.2s ease;
 }
 
-.brands__logo:hover .brands__logo-icon {
-  filter: grayscale(0) drop-shadow(0 0 16px currentColor);
+.brands__logo:active .brands__logo-img {
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
 }
 
-.brands__logo-name {
+.brands__stats-line {
+  width: 80%;
+  margin: 0 auto 40px auto;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
   font-family: var(--font-primary);
-  font-size: 14px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 1px;
-  transition: color 0.3s;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
 }
 
-.brands__logo:hover .brands__logo-name {
-  color: rgba(255, 255, 255, 0.8);
+.brands__stats-line .highlight {
+  color: #a78bfa;
+  font-weight: 700;
 }
 
 /* Bottom */

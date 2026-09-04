@@ -3,7 +3,14 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './BeforeAfter.css'
 
-const sixVideoBoxes = [
+import video1Before from '../../assets/After-before-videos/screen-20250923-075153.mp4'
+import video1After from '../../assets/After-before-videos/screen-20250923-075222.mp4'
+import video2Before from '../../assets/After-before-videos/screen-20260904-015828.mp4'
+import video2After from '../../assets/After-before-videos/screen-20260904-015926.mp4'
+import video3Before from '../../assets/After-before-videos/screen-20260904-020524.mp4'
+import video3After from '../../assets/After-before-videos/screen-20260904-020556.mp4'
+
+const videoBoxes = [
   {
     id: 'client1-before',
     clientTag: 'Client 1',
@@ -13,7 +20,7 @@ const sixVideoBoxes = [
     desc: 'Unoptimized footage & low engagement',
     views: '15K Views',
     roas: '1.2x ROAS',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    videoUrl: video1Before,
     poster: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
   },
   {
@@ -25,7 +32,7 @@ const sixVideoBoxes = [
     desc: 'High-converting viral strategy (+450% Revenue)',
     views: '2.4M Views',
     roas: '8.5x ROAS',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    videoUrl: video1After,
     poster: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
   },
   {
@@ -37,7 +44,7 @@ const sixVideoBoxes = [
     desc: 'Static images & low video reach',
     views: '8K Views',
     roas: '0.9x ROAS',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
+    videoUrl: video2Before,
     poster: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
   },
   {
@@ -49,7 +56,7 @@ const sixVideoBoxes = [
     desc: 'Cinematic property walkthroughs (12x Leads)',
     views: '4.8M Views',
     roas: '12x ROAS',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+    videoUrl: video2After,
     poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
   },
   {
@@ -61,7 +68,7 @@ const sixVideoBoxes = [
     desc: 'High ad cost & poor conversion',
     views: '32K Views',
     roas: '1.5x ROAS',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreet.mp4',
+    videoUrl: video3Before,
     poster: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
   },
   {
@@ -73,22 +80,13 @@ const sixVideoBoxes = [
     desc: 'Problem-solving hook ads (18x ROI)',
     views: '6.2M Views',
     roas: '18x ROAS',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+    videoUrl: video3After,
     poster: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80',
   },
 ]
 
 const BeforeAfter = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const scrollRef = useRef(null)
-
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current
-      const scrollAmount = direction === 'left' ? -clientWidth * 0.75 : clientWidth * 0.75
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
-    }
-  }
 
   return (
     <section className="before-after section" id="before-after" ref={ref}>
@@ -115,9 +113,9 @@ const BeforeAfter = () => {
           </p> */}
         </motion.div>
 
-        {/* ONE SINGLE HORIZONTAL BOX CONTAINER FOR ALL 6 VIDEO BOXES */}
+        {/* Grid Container for Video Boxes */}
         <motion.div
-          className="before-after__horizontal-card"
+          className="before-after__container-card"
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -128,33 +126,10 @@ const BeforeAfter = () => {
               <span className="before-after__live-dot" />
               <span className="before-after__top-title">Explore before and after results across different clients</span>
             </div>
-
-            {/* Scroll Navigation Arrows */}
-            <div className="before-after__nav-buttons">
-              <button
-                className="before-after__nav-btn"
-                onClick={() => scroll('left')}
-                aria-label="Previous videos"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-              <button
-                className="before-after__nav-btn"
-                onClick={() => scroll('right')}
-                aria-label="Next videos"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
-            </div>
           </div>
 
-          {/* 6 Video Boxes in One Horizontal Track */}
-          <div className="before-after__horizontal-track" ref={scrollRef}>
-            {sixVideoBoxes.map((box, index) => (
+          <div className="before-after__grid">
+            {videoBoxes.map((box, index) => (
               <div
                 key={box.id}
                 className={`before-after__box ${box.type === 'BEFORE' ? 'before-after__box--before' : 'before-after__box--after'
@@ -175,12 +150,15 @@ const BeforeAfter = () => {
                 {/* Video Player */}
                 <div className="before-after__video-wrapper">
                   <video
+                    src={box.videoUrl}
                     controls
+                    controlsList="nodownload noplaybackrate"
+                    disablePictureInPicture
                     poster={box.poster}
                     className="before-after__video"
                     preload="metadata"
+                    playsInline
                   >
-                    <source src={box.videoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>

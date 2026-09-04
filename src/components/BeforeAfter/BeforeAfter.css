@@ -69,8 +69,8 @@
   line-height: 1.6;
 }
 
-/* SINGLE HORIZONTAL CONTAINER CARD */
-.before-after__horizontal-card {
+/* CONTAINER CARD */
+.before-after__container-card {
   background: rgba(12, 12, 20, 0.75);
   border: 1px solid rgba(139, 92, 246, 0.25);
   backdrop-filter: blur(20px);
@@ -114,68 +114,18 @@
   letter-spacing: 0.5px;
 }
 
-/* Nav Buttons */
-.before-after__nav-buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.before-after__nav-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(139, 92, 246, 0.15);
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  color: #ffffff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.before-after__nav-btn:hover {
-  background: rgba(139, 92, 246, 0.4);
-  border-color: rgba(167, 139, 250, 0.7);
-  transform: scale(1.08);
-  box-shadow: 0 0 16px rgba(139, 92, 246, 0.5);
-}
-
-/* 6 VIDEO BOXES HORIZONTAL TRACK */
-.before-after__horizontal-track {
-  display: flex;
+/* GRID CONTAINER */
+.before-after__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
   padding: 10px 4px 20px 4px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(139, 92, 246, 0.4) rgba(255, 255, 255, 0.05);
 }
 
-.before-after__horizontal-track::-webkit-scrollbar {
-  height: 8px;
-}
-
-.before-after__horizontal-track::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-
-.before-after__horizontal-track::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.4);
-  border-radius: 10px;
-}
-
-.before-after__horizontal-track::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.7);
-}
-
-/* Individual Video Box (Fixed width in horizontal row) */
+/* Individual Video Box */
 .before-after__box {
   position: relative;
-  flex: 0 0 340px;
-  width: 340px;
+  width: 100%;
   background: rgba(18, 18, 28, 0.95);
   border-radius: 20px;
   overflow: hidden;
@@ -254,7 +204,7 @@
 .before-after__video-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   background: #000000;
   overflow: hidden;
 }
@@ -326,13 +276,18 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .before-after__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 640px) {
-  .before-after__horizontal-card {
+  .before-after__container-card {
     padding: 20px 14px;
   }
 
-  .before-after__box {
-    flex: 0 0 280px;
-    width: 280px;
+  .before-after__grid {
+    grid-template-columns: 1fr;
   }
 }

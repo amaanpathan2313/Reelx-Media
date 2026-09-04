@@ -63,14 +63,14 @@ const Stats = () => {
         {/* Marquee band */}
         <div className="stats__marquee">
           <div className="stats__marquee-track">
-            {['YouTube Ads', 'Instagram Reels', 'TikTok Viral', 'Facebook Ads', 'Brand Films', 'Product Videos', 'Testimonials', 'UGC Content'].map((item, i) => (
+            {['YouTube Ads', 'Instagram Reels', 'Facebook Ads', 'Brand Films', 'Product Videos', 'Testimonials', 'UGC Content'].map((item, i) => (
               <React.Fragment key={i}>
                 <span className="stats__marquee-item">{item}</span>
                 <span className="stats__marquee-dot">✦</span>
               </React.Fragment>
             ))}
             {/* Duplicate for infinite loop */}
-            {['YouTube Ads', 'Instagram Reels', 'TikTok Viral', 'Facebook Ads', 'Brand Films', 'Product Videos', 'Testimonials', 'UGC Content'].map((item, i) => (
+            {['YouTube Ads', 'Instagram Reels', 'Facebook Ads', 'Brand Films', 'Product Videos', 'Testimonials', 'UGC Content'].map((item, i) => (
               <React.Fragment key={`dup-${i}`}>
                 <span className="stats__marquee-item">{item}</span>
                 <span className="stats__marquee-dot">✦</span>
