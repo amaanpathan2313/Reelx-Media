@@ -3,12 +3,12 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './BeforeAfter.css'
 
-import video1Before from '../../assets/After-before-videos/screen-20250923-075153.mp4'
-import video1After from '../../assets/After-before-videos/screen-20250923-075222.mp4'
-import video2Before from '../../assets/After-before-videos/screen-20260904-015828.mp4'
-import video2After from '../../assets/After-before-videos/screen-20260904-015926.mp4'
-import video3Before from '../../assets/After-before-videos/screen-20260904-020524.mp4'
-import video3After from '../../assets/After-before-videos/screen-20260904-020556.mp4'
+import video1Before from '../../assets/before-and-after/before-after-1.1.mp4'
+import video1After from '../../assets/before-and-after/before after 1.2.mp4'
+import video2Before from '../../assets/before-and-after/before after 2.1.mp4'
+import video2After from '../../assets/before-and-after/before after 2.2.mp4'
+import video3Before from '../../assets/before-and-after/before after 3.1.mp4'
+import video3After from '../../assets/before-and-after/before after 3.2.mp4'
 
 const videoBoxes = [
   {

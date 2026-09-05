@@ -3,13 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './PhotoResults.css'
 
-import img1 from '../../assets/campain_images/1.jpeg'
-import img2 from '../../assets/campain_images/2.jpeg'
-import img3 from '../../assets/campain_images/3.jpeg'
-import img4 from '../../assets/campain_images/4.jpeg'
-import img5 from '../../assets/campain_images/5.jpeg'
-import img6 from '../../assets/campain_images/6.jpeg'
-import img7 from '../../assets/campain_images/7.jpeg'
+import img1 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_40_34 PM.png'
+import img2 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_40_57 PM.png'
+import img3 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_10 PM.png'
+import img4 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_19 PM.png'
+import img5 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_27 PM.png'
+import img6 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_45_14 PM.png'
 
 const photoResultsData = [
   {
@@ -84,18 +83,6 @@ const photoResultsData = [
     fallbackUrl: '/compains_images/6.jpg',
     caption: 'Patient Booking Campaign Proof',
   },
-  {
-    id: 7,
-    title: 'E-Commerce Viral Reel Scale',
-    category: 'Brand Scaling',
-    resultBadge: '1,240 Sales Leads',
-    costPerResult: '₹5.50 / msg',
-    reach: '98,400 Reach',
-    amountSpent: '₹6,820.00 Spent',
-    imgUrl: img7,
-    fallbackUrl: '/compains_images/7.jpg',
-    caption: 'E-Commerce High ROAS Ad Proof',
-  },
 ]
 
 const PhotoResults = () => {
@@ -150,7 +137,7 @@ const PhotoResults = () => {
               <span className="photo-results__top-title">Verified Campaign Screenshots</span>
             </div>
 
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows (Hidden on Mobile) */}
             <div className="photo-results__nav-buttons">
               <button
                 className="photo-results__nav-btn"
@@ -173,8 +160,8 @@ const PhotoResults = () => {
             </div>
           </div>
 
-          {/* 7 Horizontal Photo Boxes in One Horizontal Track */}
-          <div className="photo-results__horizontal-track" ref={scrollRef}>
+          {/* Photo Boxes Layout (Horizontal on Desktop, Grid on Mobile) */}
+          <div className="photo-results__layout" ref={scrollRef}>
             {photoResultsData.map((item, index) => (
               <div key={item.id} className="photo-results__box">
                 {/* Photo Tag */}
@@ -184,10 +171,7 @@ const PhotoResults = () => {
                 </div>
 
                 {/* Photo Container */}
-                <div
-                  className="photo-results__img-wrapper"
-                  onClick={() => setSelectedPhoto(item)}
-                >
+                <div className="photo-results__img-wrapper">
                   <img
                     src={item.imgUrl}
                     alt={item.title}
@@ -199,73 +183,16 @@ const PhotoResults = () => {
                       }
                     }}
                   />
-                  <div className="photo-results__img-overlay">
-                    <span className="photo-results__zoom-btn">🔍 Click to Expand</span>
-                  </div>
                 </div>
 
-                {/* Box Content */}
-                <div className="photo-results__box-content">
-                  <div className="photo-results__box-badge">{item.resultBadge}</div>
-                  <h4 className="photo-results__box-title">{item.title}</h4>
-                  <p className="photo-results__box-caption">{item.caption}</p>
 
-                  <div className="photo-results__metrics">
-                    <span className="photo-results__metric-pill">
-                      💬 {item.costPerResult}
-                    </span>
-                    <span className="photo-results__metric-pill">
-                      👥 {item.reach}
-                    </span>
-                    <span className="photo-results__metric-pill photo-results__metric-pill--green">
-                      💰 {item.amountSpent}
-                    </span>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
         </motion.div>
       </div>
 
-      {/* Lightbox Zoom Modal */}
-      <AnimatePresence>
-        {selectedPhoto && (
-          <motion.div
-            className="photo-results__modal-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedPhoto(null)}
-          >
-            <motion.div
-              className="photo-results__modal-content"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="photo-results__modal-close"
-                onClick={() => setSelectedPhoto(null)}
-                aria-label="Close image preview"
-              >
-                ✕
-              </button>
-              <img
-                src={selectedPhoto.imgUrl}
-                alt={selectedPhoto.title}
-                className="photo-results__modal-img"
-              />
-              <div className="photo-results__modal-info">
-                <h3>{selectedPhoto.title}</h3>
-                <p>{selectedPhoto.caption}</p>
-                <div className="photo-results__modal-badge">{selectedPhoto.resultBadge}</div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
     </section>
   )
 }
