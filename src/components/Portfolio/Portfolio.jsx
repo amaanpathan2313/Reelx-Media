@@ -36,38 +36,38 @@ const demoVideo = 'https://res.cloudinary.com/gkl3exsq/video/upload/v1792927651/
 const categories = ['All', 'Resorts / Villas', 'Real State', 'Health Care', 'Promotional Videos']
 
 const portfolioItems = [
-  { id: 'p1', title: 'Brand Promo Video 1', category: 'Promotional Videos', views: '3.1M', roas: '9.2x', color: '#8b5cf6', emoji: '🎬', videoUrl: promo1 },
-  { id: 'r2', title: 'Resort Video 1', category: 'Resorts / Villas', views: '2.1M', roas: '8.4x', color: '#10b981', emoji: '🎬', videoUrl: resort2 },
-  { id: 'rs1', title: 'Real Estate Video 1', category: 'Real State', views: '1.4M', roas: '7.1x', color: '#10b981', emoji: '🎬', videoUrl: realstate1 },
+  { id: 'p1', title: 'Brand Promo Video 1', category: 'Promotional Videos', color: '#8b5cf6', emoji: '🎬', videoUrl: promo1 },
+  { id: 'r2', title: 'Resort Video 1', category: 'Resorts / Villas', color: '#10b981', emoji: '🎬', videoUrl: resort2 },
+  { id: 'rs1', title: 'Real Estate Video 1', category: 'Real State', color: '#10b981', emoji: '🎬', videoUrl: realstate1 },
   
-  { id: 'p2', title: 'Brand Promo Video 2', category: 'Promotional Videos', views: '2.4M', roas: '7.5x', color: '#ec4899', emoji: '🎬', videoUrl: promo2 },
-  { id: 'r3', title: 'Resort Video 2', category: 'Resorts / Villas', views: '1.5M', roas: '6.2x', color: '#06b6d4', emoji: '🎬', videoUrl: resort3 },
-  { id: 'rs2', title: 'Real Estate Video 2', category: 'Real State', views: '2.8M', roas: '8.4x', color: '#06b6d4', emoji: '🎬', videoUrl: realstate2 },
+  { id: 'p2', title: 'Brand Promo Video 2', category: 'Promotional Videos', color: '#ec4899', emoji: '🎬', videoUrl: promo2 },
+  { id: 'r3', title: 'Resort Video 2', category: 'Resorts / Villas', color: '#06b6d4', emoji: '🎬', videoUrl: resort3 },
+  { id: 'rs2', title: 'Real Estate Video 2', category: 'Real State', color: '#06b6d4', emoji: '🎬', videoUrl: realstate2 },
   
-  { id: 'p3', title: 'Brand Promo Video 3', category: 'Promotional Videos', views: '4.8M', roas: '11.1x', color: '#06b6d4', emoji: '🎬', videoUrl: promo3 },
-  { id: 'r4', title: 'Resort Video 3', category: 'Resorts / Villas', views: '3.4M', roas: '10.1x', color: '#8b5cf6', emoji: '🎬', videoUrl: resort4 },
-  { id: 'rs3', title: '2BHK Cinematics', category: 'Real State', views: '3.1M', roas: '9.2x', color: '#8b5cf6', emoji: '🎬', videoUrl: realstate2Bhk },
+  { id: 'p3', title: 'Brand Promo Video 3', category: 'Promotional Videos', color: '#06b6d4', emoji: '🎬', videoUrl: promo3 },
+  { id: 'r4', title: 'Resort Video 3', category: 'Resorts / Villas', color: '#8b5cf6', emoji: '🎬', videoUrl: resort4 },
+  { id: 'rs3', title: '2BHK Cinematics', category: 'Real State', color: '#8b5cf6', emoji: '🎬', videoUrl: realstate2Bhk },
   
-  { id: 'p4', title: 'Brand Promo Video 4', category: 'Promotional Videos', views: '1.2M', roas: '5.4x', color: '#10b981', emoji: '🎬', videoUrl: promo4 },
-  { id: 'r5', title: 'Resort Video 4', category: 'Resorts / Villas', views: '1.2M', roas: '5.5x', color: '#ec4899', emoji: '🎬', videoUrl: resort5 },
-  { id: 'rs4', title: 'Real Estate Video 3', category: 'Real State', views: '1.9M', roas: '6.5x', color: '#ec4899', emoji: '🎬', videoUrl: demoVideo },
+  { id: 'p4', title: 'Brand Promo Video 4', category: 'Promotional Videos', color: '#10b981', emoji: '🎬', videoUrl: promo4 },
+  { id: 'r5', title: 'Resort Video 4', category: 'Resorts / Villas', color: '#ec4899', emoji: '🎬', videoUrl: resort5 },
+  { id: 'rs4', title: 'Real Estate Video 3', category: 'Real State', color: '#ec4899', emoji: '🎬', videoUrl: demoVideo },
   
-  { id: 'p5', title: 'Brand Promo Video 5', category: 'Promotional Videos', views: '5.6M', roas: '13.2x', color: '#f97316', emoji: '🎬', videoUrl: promo5 },
-  { id: 'r6', title: 'Resort Video 5', category: 'Resorts / Villas', views: '4.7M', roas: '12.8x', color: '#fbbf24', emoji: '🎬', videoUrl: resort6 },
-  { id: 'rs5', title: 'Real Estate Video 4', category: 'Real State', views: '4.2M', roas: '11.8x', color: '#fbbf24', emoji: '🎬', videoUrl: realstate4 },
+  { id: 'p5', title: 'Brand Promo Video 5', category: 'Promotional Videos', color: '#f97316', emoji: '🎬', videoUrl: promo5 },
+  { id: 'r6', title: 'Resort Video 5', category: 'Resorts / Villas', color: '#fbbf24', emoji: '🎬', videoUrl: resort6 },
+  { id: 'rs5', title: 'Real Estate Video 4', category: 'Real State', color: '#fbbf24', emoji: '🎬', videoUrl: realstate4 },
   
-  { id: 'p6', title: 'Brand Promo Video 6', category: 'Promotional Videos', views: '8.1M', roas: '15.8x', color: '#fbbf24', emoji: '🎬', videoUrl: promo6 },
-  { id: 'r7', title: 'Resort Video 6', category: 'Resorts / Villas', views: '5.9M', roas: '14.2x', color: '#f97316', emoji: '🎬', videoUrl: resort7 },
-  { id: 'rs6', title: '4BHK Cinematics', category: 'Real State', views: '5.5M', roas: '14.1x', color: '#f97316', emoji: '🎬', videoUrl: realstate4Bhk },
+  { id: 'p6', title: 'Brand Promo Video 6', category: 'Promotional Videos', color: '#fbbf24', emoji: '🎬', videoUrl: promo6 },
+  { id: 'r7', title: 'Resort Video 6', category: 'Resorts / Villas', color: '#f97316', emoji: '🎬', videoUrl: resort7 },
+  { id: 'rs6', title: '4BHK Cinematics', category: 'Real State', color: '#f97316', emoji: '🎬', videoUrl: realstate4Bhk },
   
-  { id: 'p7', title: 'Brand Promo Video 7', category: 'Promotional Videos', views: '2.9M', roas: '8.3x', color: '#4f46e5', emoji: '🎬', videoUrl: demoVideo },
-  { id: 'rs7', title: 'Real Estate Video 5', category: 'Real State', views: '2.4M', roas: '7.9x', color: '#4f46e5', emoji: '🎬', videoUrl: realstate5 },
+  { id: 'p7', title: 'Brand Promo Video 7', category: 'Promotional Videos', color: '#4f46e5', emoji: '🎬', videoUrl: demoVideo },
+  { id: 'rs7', title: 'Real Estate Video 5', category: 'Real State', color: '#4f46e5', emoji: '🎬', videoUrl: realstate5 },
   
-  { id: 'p8', title: 'Brand Promo Video 8', category: 'Promotional Videos', views: '1.9M', roas: '6.7x', color: '#ef4444', emoji: '🎬', videoUrl: promo8 },
-  { id: 'rs8', title: 'Real Estate Video 6', category: 'Real State', views: '1.7M', roas: '5.8x', color: '#ef4444', emoji: '🎬', videoUrl: demoVideo },
+  { id: 'p8', title: 'Brand Promo Video 8', category: 'Promotional Videos', color: '#ef4444', emoji: '🎬', videoUrl: promo8 },
+  { id: 'rs8', title: 'Real Estate Video 6', category: 'Real State', color: '#ef4444', emoji: '🎬', videoUrl: demoVideo },
   
-  { id: 'p9', title: 'Brand Promo Video 9', category: 'Promotional Videos', views: '4.2M', roas: '10.5x', color: '#a78bfa', emoji: '🎬', videoUrl: promo9 },
-  { id: 'rs9', title: 'Real Estate Video 7', category: 'Real State', views: '3.6M', roas: '10.5x', color: '#a78bfa', emoji: '🎬', videoUrl: realstate7 },
+  { id: 'p9', title: 'Brand Promo Video 9', category: 'Promotional Videos', color: '#a78bfa', emoji: '🎬', videoUrl: promo9 },
+  { id: 'rs9', title: 'Real Estate Video 7', category: 'Real State', color: '#a78bfa', emoji: '🎬', videoUrl: realstate7 },
 ]
 
 const Portfolio = () => {
@@ -161,19 +161,6 @@ const Portfolio = () => {
                       </div>
                     </>
                   )}
-                  <div className="portfolio__overlay" style={{ pointerEvents: 'none' }}>
-                    <div className="portfolio__overlay-stats">
-                      <div>
-                        <div className="portfolio__stat-val">{item.views}</div>
-                        <div className="portfolio__stat-label">Views</div>
-                      </div>
-                      <div className="portfolio__stat-divider" />
-                      <div>
-                        <div className="portfolio__stat-val" style={{ color: item.color }}>{item.roas}</div>
-                        <div className="portfolio__stat-label">ROAS</div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Info */}

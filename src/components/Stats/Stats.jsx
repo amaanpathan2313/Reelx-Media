@@ -12,7 +12,7 @@ const stats = [
 ]
 
 const Stats = () => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
 
   return (
     <section className="stats section" id="stats">
@@ -21,29 +21,31 @@ const Stats = () => {
         <motion.div
           ref={ref}
           className="stats__grid"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, staggerChildren: 0.1 }}
+          transition={{ duration: 0.6 }}
         >
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               className="stats__card glass-card"
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ delay: i * 0.12, duration: 0.6 }}
-              whileHover={{ y: -8, scale: 1.02 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ y: -6, scale: 1.02 }}
             >
               <div className="stats__icon">{stat.icon}</div>
               <div className="stats__number">
-                {inView && (
+                {inView ? (
                   <CountUp
                     end={stat.number}
-                    duration={2.5}
-                    delay={i * 0.1}
+                    duration={2}
+                    delay={i * 0.08}
                     suffix={stat.suffix}
-                    enableScrollSpy
+                    preserveValue={true}
                   />
+                ) : (
+                  <span>0{stat.suffix}</span>
                 )}
               </div>
               <div className="stats__label">{stat.label}</div>
@@ -53,7 +55,7 @@ const Stats = () => {
                   className="stats__bar-fill"
                   initial={{ width: 0 }}
                   animate={inView ? { width: '100%' } : {}}
-                  transition={{ delay: i * 0.12 + 0.5, duration: 1.2 }}
+                  transition={{ delay: i * 0.1 + 0.4, duration: 1 }}
                 />
               </div>
             </motion.div>

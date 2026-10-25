@@ -22,8 +22,6 @@ const videoBoxes = [
     type: 'BEFORE',
     title: 'Client 1 — Before ReelX',
     desc: 'Unoptimized footage & low engagement',
-    views: '15K Views',
-    roas: '1.2x ROAS',
     videoUrl: video1Before,
     poster: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
   },
@@ -34,8 +32,6 @@ const videoBoxes = [
     type: 'AFTER',
     title: 'Client 1 — After ReelX',
     desc: 'High-converting viral strategy (+450% Revenue)',
-    views: '2.4M Views',
-    roas: '8.5x ROAS',
     videoUrl: video1After,
     poster: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
   },
@@ -46,8 +42,6 @@ const videoBoxes = [
     type: 'BEFORE',
     title: 'Client 2 — Before ReelX',
     desc: 'Static images & low video reach',
-    views: '8K Views',
-    roas: '0.9x ROAS',
     videoUrl: video2Before,
     poster: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
   },
@@ -58,8 +52,6 @@ const videoBoxes = [
     type: 'AFTER',
     title: 'Client 2 — After ReelX',
     desc: 'Cinematic property walkthroughs (12x Leads)',
-    views: '4.8M Views',
-    roas: '12x ROAS',
     videoUrl: video2After,
     poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
   },
@@ -70,8 +62,6 @@ const videoBoxes = [
     type: 'BEFORE',
     title: 'Client 3 — Before ReelX',
     desc: 'High ad cost & poor conversion',
-    views: '32K Views',
-    roas: '1.5x ROAS',
     videoUrl: video3Before,
     poster: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
   },
@@ -82,8 +72,6 @@ const videoBoxes = [
     type: 'AFTER',
     title: 'Client 3 — After ReelX',
     desc: 'Problem-solving hook ads (18x ROI)',
-    views: '6.2M Views',
-    roas: '18x ROAS',
     videoUrl: video3After,
     poster: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80',
   },
@@ -149,22 +137,6 @@ const BeforeAfter = () => {
                     preload="metadata"
                     playsInline
                   />
-                  
-                  <div className="before-after__overlay">
-                    <div className="before-after__overlay-stats">
-                      <div>
-                        <div className="before-after__stat-val">{box.views}</div>
-                        <div className="before-after__stat-label">Views</div>
-                      </div>
-                      <div className="before-after__stat-divider" />
-                      <div>
-                        <div className="before-after__stat-val" style={{ color: box.type === 'BEFORE' ? '#fca5a5' : '#6ee7b7' }}>
-                          {box.roas}
-                        </div>
-                        <div className="before-after__stat-label">ROAS</div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Box Content */}
