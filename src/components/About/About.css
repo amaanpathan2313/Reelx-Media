@@ -208,13 +208,22 @@
   animation: spin-slow 35s linear infinite reverse;
 }
 
-/* Content */
 .about__heading {
   font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 800;
   color: #fff;
   margin-bottom: 24px;
-  line-height: 1.1;
+  line-height: 1.15;
+}
+
+.about__heading-business {
+  font-size: calc(1em + 5px);
+  display: inline-block;
+}
+
+.about__heading-nowrap {
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .about__desc {
@@ -279,6 +288,7 @@
 }
 
 @media (max-width: 640px) {
+  .about__heading { font-size: clamp(22px, 6vw, 32px); }
   .about__features { grid-template-columns: 1fr; }
   .about__ring { display: none; }
   .about__badge-overlay { right: 0; bottom: -10px; }

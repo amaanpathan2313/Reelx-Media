@@ -44,8 +44,9 @@ const Brands = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="brands__tagline">
-            We Don't Just <span className="gradient-text">Make Videos</span>,
-            We Build <span className="gradient-text">Brands</span>
+            We Don't Just <span className="gradient-text">Make Videos</span>
+            <br />
+            We Help You in <span className="gradient-text">Making More Money</span>
           </p>
           <p className="brands__sub">Trusted by fast-growing companies across industries</p>
         </motion.div>

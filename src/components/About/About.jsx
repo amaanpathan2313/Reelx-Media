@@ -6,10 +6,10 @@ import logoImg from '../../assets/logo-transparent.png'
 import './About.css'
 
 const features = [
-  { icon: '🎬', text: 'Data-driven video strategy' },
-  { icon: '📊', text: 'ROI-focused content creation' },
-  { icon: '🚀', text: 'Rapid production & delivery' },
-  { icon: '🎯', text: 'Platform-specific optimization' },
+  { icon: '🎬', text: 'Strategic Business Planning' },
+  { icon: '📊', text: 'Content & Brand Positioning' },
+  { icon: '🚀', text: 'Lead Generation & Sales' },
+  { icon: '🎯', text: 'Performance & Growth Tracking' },
 ]
 
 const About = () => {
@@ -62,21 +62,21 @@ const About = () => {
           <div className="section-label">About ReelX</div>
 
           <h2 className="about__heading">
-            We Are{' '}
-            <span className="gradient-text">Performance</span>
+            We Are
             <br />
-            Driven Content Creators
+            <span className="gradient-text about__heading-business">Business</span>
+            <br />
+            <span className="gradient-text about__heading-nowrap">Growth Strategists</span>
           </h2>
 
           <p className="about__desc">
-            At ReelX Media, we blend cinematic storytelling with data-driven strategy.
-            Every video we create is engineered to perform — attracting your ideal audience
-            and converting them into loyal, paying customers.
+            At ReelXMedia, we combine business strategy, content creation, and performance
+            marketing to help brands attract customers, generate leads, increase sales, and
+            scale their business.
           </p>
 
           <p className="about__desc">
-            We're not just videographers. We're growth partners who understand both the art
-            of compelling content and the science of what makes businesses scale.
+            We don't believe in one-size-fits-all marketing. We build strategic business growth systems specifically designed around your business, your target audience, and your desired goals—turning marketing efforts into measurable progress and sustainable growth.
           </p>
 
           <div className="about__features">

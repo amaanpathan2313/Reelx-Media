@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './PhotoResults.css'
@@ -86,16 +86,84 @@ const photoResultsData = [
 ]
 
 const PhotoResults = () => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.15 })
   const scrollRef = useRef(null)
+  const currentIndexRef = useRef(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAutoPlay, setIsAutoPlay] = useState(true)
+  const [activePhotoId, setActivePhotoId] = useState(null)
   const [selectedPhoto, setSelectedPhoto] = useState(null)
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const { clientWidth } = scrollRef.current
-      const scrollAmount = direction === 'left' ? -clientWidth * 0.75 : clientWidth * 0.75
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+  // Scroll smoothly to a specific card index
+  const scrollToIndex = (index, behavior = 'smooth') => {
+    if (!scrollRef.current) return
+    const container = scrollRef.current
+    const cards = container.querySelectorAll('.photo-results__box')
+    if (!cards || !cards[index]) return
+
+    if (index === 0) {
+      container.scrollTo({ left: 0, behavior })
+      setCurrentIndex(0)
+      currentIndexRef.current = 0
+      return
     }
+
+    const card = cards[index]
+    const containerRect = container.getBoundingClientRect()
+    const cardRect = card.getBoundingClientRect()
+    const offset = cardRect.left - containerRect.left
+    const targetLeft = container.scrollLeft + offset - 4
+
+    container.scrollTo({
+      left: Math.max(0, targetLeft),
+      behavior,
+    })
+    setCurrentIndex(index)
+    currentIndexRef.current = index
+  }
+
+  // Automated slider: scrolls every 3 seconds while in view and isAutoPlay is true
+  useEffect(() => {
+    if (!isAutoPlay || !inView) return
+
+    const interval = setInterval(() => {
+      const nextIndex =
+        currentIndexRef.current + 1 >= photoResultsData.length
+          ? 0
+          : currentIndexRef.current + 1
+      scrollToIndex(nextIndex)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [isAutoPlay, inView])
+
+  // Stop auto-play when user clicks on any image / box
+  const handleCardClick = (item, index) => {
+    setIsAutoPlay(false)
+    setActivePhotoId(item.id)
+    scrollToIndex(index)
+  }
+
+  // Handle manual navigation arrows
+  const handleNavArrow = (direction) => {
+    setIsAutoPlay(false)
+    let next
+    if (direction === 'left') {
+      next =
+        (currentIndexRef.current - 1 + photoResultsData.length) %
+        photoResultsData.length
+    } else {
+      next = (currentIndexRef.current + 1) % photoResultsData.length
+    }
+    scrollToIndex(next)
+    setActivePhotoId(photoResultsData[next]?.id)
+  }
+
+  // Open full-screen lightbox preview
+  const handleOpenModal = (e, item) => {
+    e.stopPropagation()
+    setIsAutoPlay(false)
+    setSelectedPhoto(item)
   }
 
   return (
@@ -123,7 +191,7 @@ const PhotoResults = () => {
           </p>
         </motion.div>
 
-        {/* 1 SINGLE HORIZONTAL BOX CONTAINER FOR 7 PHOTO BOXES */}
+        {/* SINGLE HORIZONTAL BOX CONTAINER */}
         <motion.div
           className="photo-results__horizontal-card"
           initial={{ opacity: 0, y: 40 }}
@@ -135,14 +203,42 @@ const PhotoResults = () => {
             <div className="photo-results__top-info">
               <span className="photo-results__live-dot" />
               <span className="photo-results__top-title">Verified Campaign Screenshots</span>
+              <span className="photo-results__counter-pill">
+                {currentIndex + 1} / {photoResultsData.length}
+              </span>
             </div>
 
-            {/* Navigation Arrows (Hidden on Mobile) */}
+            {/* Controls: Play/Pause indicator & Nav Arrows */}
             <div className="photo-results__nav-buttons">
               <button
+                className={`photo-results__autoplay-btn ${isAutoPlay ? 'photo-results__autoplay-btn--active' : 'photo-results__autoplay-btn--paused'}`}
+                onClick={() => setIsAutoPlay(!isAutoPlay)}
+                title={isAutoPlay ? 'Auto-scrolling every 3s (Click to pause)' : 'Slider stopped (Click to resume)'}
+                aria-label={isAutoPlay ? 'Pause auto slider' : 'Resume auto slider'}
+              >
+                {isAutoPlay ? (
+                  <>
+                    <span className="photo-results__pulse-dot" />
+                    <span className="photo-results__autoplay-text">Auto (3s)</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="6" y="4" width="4" height="16" rx="1" />
+                      <rect x="14" y="4" width="4" height="16" rx="1" />
+                    </svg>
+                  </>
+                ) : (
+                  <>
+                    <span className="photo-results__autoplay-text">Stopped</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="6 4 18 12 6 20 6 4" />
+                    </svg>
+                  </>
+                )}
+              </button>
+
+              <button
                 className="photo-results__nav-btn"
-                onClick={() => scroll('left')}
-                aria-label="Previous photos"
+                onClick={() => handleNavArrow('left')}
+                aria-label="Previous photo"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M15 18l-6-6 6-6" />
@@ -150,8 +246,8 @@ const PhotoResults = () => {
               </button>
               <button
                 className="photo-results__nav-btn"
-                onClick={() => scroll('right')}
-                aria-label="Next photos"
+                onClick={() => handleNavArrow('right')}
+                aria-label="Next photo"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M9 18l6-6-6-6" />
@@ -160,16 +256,16 @@ const PhotoResults = () => {
             </div>
           </div>
 
-          {/* Photo Boxes Layout (Horizontal on Desktop, Grid on Mobile) */}
+          {/* Photo Boxes Layout Track */}
           <div className="photo-results__layout" ref={scrollRef}>
             {photoResultsData.map((item, index) => (
-              <a
+              <div
                 key={item.id}
-                href={item.imgUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="photo-results__box"
-                title={`Open Proof #${index + 1} (${item.title}) in new tab`}
+                className={`photo-results__box ${activePhotoId === item.id ? 'photo-results__box--active' : ''}`}
+                onClick={() => handleCardClick(item, index)}
+                role="button"
+                tabIndex={0}
+                title={isAutoPlay ? 'Click image to stop auto-scroll' : `Proof #${index + 1}`}
               >
                 {/* Photo Tag Header */}
                 <div className="photo-results__tag-row">
@@ -177,13 +273,11 @@ const PhotoResults = () => {
                     <span className="photo-results__dot" />
                     Proof #{index + 1} • {item.category}
                   </div>
-                  <span className="photo-results__open-badge" title="Open full proof in new tab">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                  </span>
+                  {!isAutoPlay && activePhotoId === item.id && (
+                    <span className="photo-results__stopped-badge">
+                      ❚❚ Stopped
+                    </span>
+                  )}
                 </div>
 
                 {/* Photo Container */}
@@ -194,33 +288,77 @@ const PhotoResults = () => {
                     className="photo-results__img"
                     onError={(e) => {
                       if (item.fallbackUrl && e.target.src !== item.fallbackUrl) {
-                        e.target.onerror = null;
-                        e.target.src = item.fallbackUrl;
-                        const parentLink = e.target.closest('a');
-                        if (parentLink) parentLink.href = item.fallbackUrl;
+                        e.target.onerror = null
+                        e.target.src = item.fallbackUrl
                       }
                     }}
                   />
-
-                  {/* Hover Overlay */}
-                  <div className="photo-results__hover-overlay">
-                    <span className="photo-results__hover-btn">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                      </svg>
-                      Open in new tab
+                  {/* Subtle click hint & expand button */}
+                  <div className="photo-results__img-overlay">
+                    <span className="photo-results__click-hint">
+                      {isAutoPlay ? 'Click to stop' : 'Stopped'}
                     </span>
+                    <button
+                      className="photo-results__expand-btn"
+                      onClick={(e) => handleOpenModal(e, item)}
+                      title="View full-size screenshot"
+                      aria-label="View full-size screenshot"
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                      </svg>
+                      <span>Zoom</span>
+                    </button>
                   </div>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </motion.div>
       </div>
 
-
+      {/* Lightbox Zoom Modal */}
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            className="photo-results__modal-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPhoto(null)}
+          >
+            <motion.div
+              className="photo-results__modal-content"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="photo-results__modal-header">
+                <div className="photo-results__modal-title-wrap">
+                  <span className="photo-results__modal-tag">Verified Proof</span>
+                  <h3 className="photo-results__modal-title">{selectedPhoto.title}</h3>
+                </div>
+                <button
+                  className="photo-results__modal-close"
+                  onClick={() => setSelectedPhoto(null)}
+                  aria-label="Close image preview"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="photo-results__modal-img-wrap">
+                <img
+                  src={selectedPhoto.imgUrl}
+                  alt={selectedPhoto.title}
+                  className="photo-results__modal-img"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
