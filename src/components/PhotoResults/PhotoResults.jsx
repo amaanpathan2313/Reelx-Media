@@ -163,11 +163,27 @@ const PhotoResults = () => {
           {/* Photo Boxes Layout (Horizontal on Desktop, Grid on Mobile) */}
           <div className="photo-results__layout" ref={scrollRef}>
             {photoResultsData.map((item, index) => (
-              <div key={item.id} className="photo-results__box">
-                {/* Photo Tag */}
-                <div className="photo-results__tag">
-                  <span className="photo-results__dot" />
-                  Proof #{index + 1} • {item.category}
+              <a
+                key={item.id}
+                href={item.imgUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="photo-results__box"
+                title={`Open Proof #${index + 1} (${item.title}) in new tab`}
+              >
+                {/* Photo Tag Header */}
+                <div className="photo-results__tag-row">
+                  <div className="photo-results__tag">
+                    <span className="photo-results__dot" />
+                    Proof #{index + 1} • {item.category}
+                  </div>
+                  <span className="photo-results__open-badge" title="Open full proof in new tab">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </span>
                 </div>
 
                 {/* Photo Container */}
@@ -180,13 +196,25 @@ const PhotoResults = () => {
                       if (item.fallbackUrl && e.target.src !== item.fallbackUrl) {
                         e.target.onerror = null;
                         e.target.src = item.fallbackUrl;
+                        const parentLink = e.target.closest('a');
+                        if (parentLink) parentLink.href = item.fallbackUrl;
                       }
                     }}
                   />
+
+                  {/* Hover Overlay */}
+                  <div className="photo-results__hover-overlay">
+                    <span className="photo-results__hover-btn">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                      Open in new tab
+                    </span>
+                  </div>
                 </div>
-
-
-              </div>
+              </a>
             ))}
           </div>
         </motion.div>
