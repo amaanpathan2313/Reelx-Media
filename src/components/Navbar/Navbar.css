@@ -155,9 +155,12 @@
   padding-left: 32px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar__links { display: none; }
   .navbar__cta { display: none; }
   .navbar__hamburger { display: flex; }
+  .navbar__logo-img {
+    height: 70px;
+    margin: -16px 0;
+  }
 }

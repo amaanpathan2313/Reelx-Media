@@ -74,8 +74,8 @@
 /* Grid */
 .portfolio__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   margin-bottom: 48px;
 }
 
@@ -99,7 +99,7 @@
 /* Visual */
 .portfolio__visual {
   position: relative;
-  aspect-ratio: 16/10;
+  aspect-ratio: 9/16;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,9 +229,22 @@
 }
 
 @media (max-width: 1024px) {
+  .portfolio__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
   .portfolio__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
-  .portfolio__grid { grid-template-columns: 1fr; }
+  .portfolio__grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+  }
+  .portfolio__info {
+    padding: 12px 10px;
+  }
+  .portfolio__title {
+    font-size: 13px;
+  }
 }

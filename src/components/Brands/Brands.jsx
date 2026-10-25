@@ -13,18 +13,22 @@ import logo7 from '../../assets/client-logo/7.png'
 import logo8 from '../../assets/client-logo/8.png'
 import logo9 from '../../assets/client-logo/9.png'
 import logo10 from '../../assets/client-logo/10.png'
+import logoZorko from '../../assets/client-logo/zorko.png'
+import logoB7Studio from '../../assets/client-logo/b7-studio.png'
 
 const brandLogos = [
-  { id: 1, src: logo1 },
-  { id: 2, src: logo2 },
-  { id: 3, src: logo3 },
-  { id: 4, src: logo4 },
-  { id: 5, src: logo5 },
-  { id: 6, src: logo6 },
-  { id: 7, src: logo7 },
-  { id: 8, src: logo8 },
-  { id: 9, src: logo9 },
-  { id: 10, src: logo10 },
+  { id: 1, src: logo1, alt: 'Client logo 1' },
+  { id: 2, src: logo2, alt: 'Sheth Villa' },
+  { id: 3, src: logo3, alt: 'Evergreen Farms' },
+  { id: 4, src: logo4, alt: 'Redwings Resort & Lawns' },
+  { id: 5, src: logo5, alt: 'Client logo 5' },
+  { id: 6, src: logo6, alt: 'Client logo 6' },
+  { id: 7, src: logo7, alt: 'Client logo 7' },
+  { id: 8, src: logo8, alt: 'Client logo 8' },
+  { id: 9, src: logo9, alt: 'Client logo 9' },
+  { id: 10, src: logo10, alt: 'Dermacos' },
+  { id: 11, src: logoZorko, alt: 'Zorko Brand of Food Lovers' },
+  { id: 12, src: logoB7Studio, alt: 'B7 Studio' },
 ]
 
 const Brands = () => {
@@ -65,7 +69,7 @@ const Brands = () => {
               {brand.text ? (
                 <div className="brands__text-content">{brand.text}</div>
               ) : (
-                <img src={brand.src} alt={`Client logo ${brand.id}`} className="brands__logo-img" />
+                <img src={brand.src} alt={brand.alt || `Client logo ${brand.id}`} className="brands__logo-img" />
               )}
             </motion.div>
           ))}
@@ -78,7 +82,7 @@ const Brands = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          We have worked with <span className="highlight">40+ Brands</span> in the last <span className="highlight">5+ years</span>
+          We have helped <span className="highlight">40+ Brands</span> in the last <span className="highlight">5+ years</span>
         </motion.div>
 
         {/* Bottom CTA */}

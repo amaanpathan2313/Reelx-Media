@@ -12,6 +12,15 @@ node_modules/
 dist/
 dist-ssr/
 *.local
+.env
+.env.*
+.env.local
+cloudinary-videos.json
+
+# Large video files (>100MB exceeds GitHub limit)
+src/assets/promotional/7.mp4
+src/assets/real-state/3.mp4
+src/assets/real-state/6.mp4
 
 # Editor directories and files
 .vscode/*

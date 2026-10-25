@@ -3,12 +3,16 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './BeforeAfter.css'
 
-import video1Before from '../../assets/before-and-after/before-after-1.1.mp4'
-import video1After from '../../assets/before-and-after/before after 1.2.mp4'
-import video2Before from '../../assets/before-and-after/before after 2.1.mp4'
-import video2After from '../../assets/before-and-after/before after 2.2.mp4'
-import video3Before from '../../assets/before-and-after/before after 3.1.mp4'
-import video3After from '../../assets/before-and-after/before after 3.2.mp4'
+const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || 'gkl3exsq'
+const getCloudinaryVideo = (publicId, version = '') =>
+  `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/${version ? `v${version}/` : ''}${publicId}.mp4`
+
+const video1Before = getCloudinaryVideo('before_after_1.1', '1792927775')
+const video1After = getCloudinaryVideo('before_after_1.2', '1792927771')
+const video2Before = getCloudinaryVideo('before_after_2.1', '1792927775')
+const video2After = getCloudinaryVideo('before_after_2.2', '1792927772')
+const video3Before = getCloudinaryVideo('before_after_3.1', '1792927765')
+const video3After = getCloudinaryVideo('before_after_3.2', '1792927776')
 
 const videoBoxes = [
   {
@@ -130,64 +134,42 @@ const BeforeAfter = () => {
 
           <div className="before-after__grid">
             {videoBoxes.map((box, index) => (
-              <div
-                key={box.id}
-                className={`before-after__box ${box.type === 'BEFORE' ? 'before-after__box--before' : 'before-after__box--after'
-                  }`}
-              >
-                {/* Before / After Tag */}
-                <div
-                  className={`before-after__tag ${box.type === 'BEFORE' ? 'before-after__tag--before' : 'before-after__tag--after'
-                    }`}
-                >
-                  <span
-                    className={`before-after__dot ${box.type === 'BEFORE' ? 'before-after__dot--red' : 'before-after__dot--green'
-                      }`}
-                  />
-                  {box.type} • {box.clientTag}
-                </div>
-
+              <div key={box.id} className="before-after__box">
                 {/* Video Player */}
                 <div className="before-after__video-wrapper">
+                  <div className="before-after__top-badge" style={{ background: box.type === 'BEFORE' ? '#ef4444' : '#10b981' }}>
+                    {box.type}
+                  </div>
                   <video
                     src={box.videoUrl}
                     controls
                     controlsList="nodownload noplaybackrate"
                     disablePictureInPicture
-                    poster={box.poster}
                     className="before-after__video"
                     preload="metadata"
                     playsInline
-                  >
-                    Your browser does not support the video tag.
-                  </video>
+                  />
+                  
+                  <div className="before-after__overlay">
+                    <div className="before-after__overlay-stats">
+                      <div>
+                        <div className="before-after__stat-val">{box.views}</div>
+                        <div className="before-after__stat-label">Views</div>
+                      </div>
+                      <div className="before-after__stat-divider" />
+                      <div>
+                        <div className="before-after__stat-val" style={{ color: box.type === 'BEFORE' ? '#fca5a5' : '#6ee7b7' }}>
+                          {box.roas}
+                        </div>
+                        <div className="before-after__stat-label">ROAS</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Box Content */}
-                <div className="before-after__box-content">
-                  <div className="before-after__box-client-name">{box.clientName}</div>
+                <div className="before-after__info">
                   <h4 className="before-after__box-title">{box.title}</h4>
-                  <p className="before-after__box-desc">{box.desc}</p>
-                  <div className="before-after__metrics">
-                    <span
-                      className={`before-after__metric-pill ${box.type === 'BEFORE'
-                        ? 'before-after__metric-pill--muted'
-                        : 'before-after__metric-pill--highlight'
-                        }`}
-                    >
-                      {box.type === 'BEFORE' ? '👁️ ' : '🔥 '}
-                      {box.views}
-                    </span>
-                    <span
-                      className={`before-after__metric-pill ${box.type === 'BEFORE'
-                        ? 'before-after__metric-pill--muted'
-                        : 'before-after__metric-pill--highlight'
-                        }`}
-                    >
-                      {box.type === 'BEFORE' ? '📉 ' : '🚀 '}
-                      {box.roas}
-                    </span>
-                  </div>
                 </div>
               </div>
             ))}

@@ -38,7 +38,7 @@
 
   /* Sizing */
   --container-max: 1280px;
-  --section-pad: 120px;
+  --section-pad: 60px;
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -58,6 +58,14 @@ html {
   font-size: 16px;
   overflow-x: hidden;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (min-width: 1025px) {
+  html {
+    zoom: 0.9; /* Scales desktop view to 90% without breaking mobile view */
+  }
 }
 
 body {
@@ -260,14 +268,14 @@ img { max-width: 100%; }
 
 /* ─── Responsive ─── */
 @media (max-width: 1024px) {
-  :root { --section-pad: 80px; }
+  :root { --section-pad: 48px; }
 }
 
 @media (max-width: 768px) {
-  :root { --section-pad: 60px; }
+  :root { --section-pad: 40px; }
   .container { padding: 0 20px; }
 }
 
 @media (max-width: 480px) {
-  :root { --section-pad: 48px; }
+  :root { --section-pad: 32px; }
 }

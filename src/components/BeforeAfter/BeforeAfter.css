@@ -117,7 +117,7 @@
 /* GRID CONTAINER */
 .before-after__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   padding: 10px 4px 20px 4px;
 }
@@ -134,16 +134,9 @@
 }
 
 .before-after__box:hover {
-  transform: translateY(-6px);
-}
-
-.before-after__box--before {
-  border-top: 4px solid #ef4444;
-}
-
-.before-after__box--before:hover {
-  border-color: rgba(239, 68, 68, 0.6);
-  box-shadow: 0 14px 35px rgba(239, 68, 68, 0.2);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .before-after__box--after {
@@ -153,51 +146,6 @@
 .before-after__box--after:hover {
   border-color: rgba(16, 185, 129, 0.6);
   box-shadow: 0 14px 35px rgba(16, 185, 129, 0.25);
-}
-
-/* Before / After Tag */
-.before-after__tag {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: 50px;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  backdrop-filter: blur(12px);
-}
-
-.before-after__tag--before {
-  background: rgba(239, 68, 68, 0.3);
-  border: 1px solid rgba(239, 68, 68, 0.6);
-  color: #fca5a5;
-}
-
-.before-after__tag--after {
-  background: rgba(16, 185, 129, 0.3);
-  border: 1px solid rgba(16, 185, 129, 0.6);
-  color: #6ee7b7;
-}
-
-.before-after__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-}
-
-.before-after__dot--red {
-  background: #ef4444;
-}
-
-.before-after__dot--green {
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
 }
 
 /* Video Player Wrapper */
@@ -216,78 +164,147 @@
   display: block;
 }
 
-/* Box Content */
-.before-after__box-content {
-  padding: 18px 20px;
+/* Overlay Gradient & Stats */
+.before-after__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 5, 8, 0.95) 0%, transparent 50%);
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
-.before-after__box-client-name {
+.before-after__box:hover .before-after__overlay {
+  opacity: 1;
+}
+
+.before-after__overlay-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  width: 100%;
+}
+
+.before-after__stat-val {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.before-after__stat-label {
   font-family: 'Inter', sans-serif;
   font-size: 11px;
-  font-weight: 600;
-  color: rgba(167, 139, 250, 0.9);
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
+}
+
+.before-after__stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Bottom Info */
+.before-after__info {
+  padding: 16px 20px;
 }
 
 .before-after__box-title {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 6px;
 }
 
-.before-after__box-desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 14px;
-  line-height: 1.4;
-}
-
-/* Metric Pills */
-.before-after__metrics {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.before-after__metric-pill {
-  padding: 4px 10px;
-  border-radius: 6px;
+/* Top Right Badge */
+.before-after__top-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #facc15;
+  color: #000000;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
-  font-weight: 600;
-}
-
-.before-after__metric-pill--muted {
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.before-after__metric-pill--highlight {
-  background: rgba(139, 92, 246, 0.15);
-  color: #c084fc;
-  border: 1px solid rgba(167, 139, 250, 0.3);
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  pointer-events: none;
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
+
+@media (max-width: 1024px) {
   .before-after__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
 @media (max-width: 640px) {
   .before-after__container-card {
-    padding: 20px 14px;
+    padding: 16px 10px;
+    border-radius: 20px;
+  }
+
+  .before-after__top-bar {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+  }
+
+  .before-after__top-title {
+    font-size: 13px;
+    line-height: 1.3;
   }
 
   .before-after__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 6px 0 12px;
+  }
+
+  .before-after__box {
+    border-radius: 16px;
+  }
+
+  .before-after__top-badge {
+    top: 8px;
+    right: 8px;
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+
+  .before-after__overlay-stats {
+    padding: 10px 8px;
+    gap: 8px;
+  }
+
+  .before-after__stat-val {
+    font-size: 13px;
+  }
+
+  .before-after__stat-label {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .before-after__stat-divider {
+    height: 20px;
+  }
+
+  .before-after__info {
+    padding: 12px 10px;
+  }
+
+  .before-after__box-title {
+    font-size: 13px;
+    line-height: 1.3;
   }
 }

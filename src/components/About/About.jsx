@@ -38,53 +38,12 @@ const About = () => {
             className="about__tilt"
           >
             <div className="about__card-3d">
-              {/* Main card */}
-              <div className="about__media-card">
-                <div className="about__media-header">
-                  <div className="about__media-dots">
-                    <span style={{ background: '#ff5f57' }} />
-                    <span style={{ background: '#febc2e' }} />
-                    <span style={{ background: '#28c840' }} />
-                  </div>
-                  <span className="about__media-tag">ReelX Analytics</span>
-                </div>
-                <div className="about__media-content">
-                  <div className="about__chart">
-                    {[40, 65, 45, 80, 60, 90, 75, 95].map((h, i) => (
-                      <motion.div
-                        key={i}
-                        className="about__chart-bar"
-                        initial={{ height: 0 }}
-                        animate={inView ? { height: `${h}%` } : {}}
-                        transition={{ delay: i * 0.1 + 0.5, duration: 0.6, ease: 'easeOut' }}
-                        style={{ opacity: 0.4 + (i / 8) * 0.6 }}
-                      />
-                    ))}
-                  </div>
-                  <div className="about__chart-label">
-                    <span>Revenue Growth Trend</span>
-                    <span className="about__chart-val gradient-text">+340%</span>
-                  </div>
-                </div>
-              </div>
 
-              {/* Badge overlay */}
-              <motion.div
-                className="about__badge-overlay"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <div className="about__badge-icon">🏆</div>
-                <div>
-                  <div className="about__badge-title">Award Winning</div>
-                  <div className="about__badge-sub">Top Video Agency 2024</div>
-                </div>
-              </motion.div>
 
               {/* ReelX logo watermark */}
-              <div className="about__watermark">
+              {/* <div className="about__watermark">
                 <img src={logoImg} alt="ReelX Media Logo" className="about__watermark-img" />
-              </div>
+              </div> */}
             </div>
           </Tilt>
 

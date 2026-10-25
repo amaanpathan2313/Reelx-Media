@@ -231,18 +231,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="hero__scroll"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-      >
-        <div className="hero__scroll-mouse">
-          <div className="hero__scroll-dot" />
-        </div>
-        <span>Scroll to explore</span>
-      </motion.div>
+
     </section>
   )
 }
