@@ -2,7 +2,18 @@ import React, { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import logoImg from '../../assets/logo-transparent.png'
+import clientLogo1 from '../../assets/client-logo/1.png'
+import clientLogo4 from '../../assets/client-logo/4.png'
+import clientLogo5 from '../../assets/client-logo/5.png'
+import clientLogo6 from '../../assets/client-logo/6.png'
 import './Hero.css'
+
+const trustLogos = [
+  { id: 5, src: clientLogo5, alt: 'Client 5' },
+  { id: 1, src: clientLogo1, alt: 'Client 1' },
+  { id: 6, src: clientLogo6, alt: 'Client 6' },
+  { id: 4, src: clientLogo4, alt: 'Client 4' },
+]
 
 const Hero = () => {
   const videoRef = useRef(null)
@@ -54,7 +65,7 @@ const Hero = () => {
               <span className="hero__badge-accent">5+ Years</span> of Excellence
             </span>
             <span className="hero__badge-divider">•</span>
-            <span className="hero__badge-sub">Performance Video Agency</span>
+            <span className="hero__badge-sub">Business Growth Agency</span>
           </motion.div>
 
           <h1 className="hero__heading">
@@ -75,13 +86,13 @@ const Hero = () => {
               Create{' '}
               <TypeAnimation
                 sequence={[
-                  'Viral Videos',
+                  'Videos',
                   2000,
-                  'Viral Content',
+                  'Content',
                   2000,
-                  'Viral Ads',
+                  'Ads',
                   2000,
-                  'Viral Brands',
+                  'Graphics',
                   2000,
                 ]}
                 wrapper="span"
@@ -107,9 +118,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.7 }}
           >
-            Performance-driven video content that doesn't just look amazing —
-            it converts viewers into customers and revenue for your business.
-          </motion.p>
+            We turn your business potential into powerful brands, loyal customers, and measurable growth.          </motion.p>
 
           <motion.div
             className="hero__actions"
@@ -145,9 +154,13 @@ const Hero = () => {
             transition={{ delay: 1.1, duration: 0.6 }}
           >
             <div className="hero__trust-avatars">
-              {[1, 2, 3, 4].map(i => (
-                <div key={i} className="hero__trust-avatar" style={{ background: `hsl(${260 + i * 30}, 70%, 50%)` }}>
-                  {['A', 'B', 'C', 'D'][i - 1]}
+              {trustLogos.map((logo, index) => (
+                <div
+                  key={logo.id}
+                  className="hero__trust-avatar"
+                  style={{ zIndex: trustLogos.length - index }}
+                >
+                  <img src={logo.src} alt={logo.alt} className="hero__trust-avatar-img" />
                 </div>
               ))}
             </div>

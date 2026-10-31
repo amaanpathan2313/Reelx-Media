@@ -5,6 +5,7 @@
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
+  padding-bottom: 0 !important;
 }
 
 .stats .container {
@@ -111,6 +112,7 @@
   font-weight: 700;
   color: #fff;
   margin-bottom: 6px;
+  line-height: 1.25;
 }
 
 .stats__desc {

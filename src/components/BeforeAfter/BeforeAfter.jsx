@@ -95,7 +95,7 @@ const BeforeAfter = () => {
         >
           <div className="before-after__badge">
             <span className="before-after__badge-icon">⚡</span>
-            <span>Client Transformations</span>
+            <span>CLIENT SUCCESS STORIES</span>
           </div>
           <h2 className="before-after__title">
             Before & After <span className="gradient-text">Results Showcase</span>

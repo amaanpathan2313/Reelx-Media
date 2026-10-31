@@ -5,10 +5,21 @@ import CountUp from 'react-countup'
 import './Stats.css'
 
 const stats = [
-  { number: 40, suffix: '+', label: 'Brands Served', icon: '🏆', desc: 'Successful campaigns' },
-  { number: 4000, suffix: '+', label: 'Videos Delivered', icon: '📸', desc: 'Across all platforms' },
-  { number: 340, suffix: '%', label: 'Avg Revenue Growth', icon: '📈', desc: 'For our clients' },
-  { number: 5, suffix: '+', label: 'Years Experience', icon: '⚡', desc: 'In social media marketing' },
+  { id: 'brands', number: 40, suffix: '+', label: 'Brands Served', icon: '🏆', desc: 'Successful campaigns' },
+  { id: 'videos', number: 4000, suffix: '+', label: 'Videos Delivered', icon: '📸', desc: 'Across all platforms' },
+  { id: 'revenue', number: 340, suffix: '%', label: 'Avg Revenue Growth', icon: '📈', desc: 'For our clients' },
+  {
+    id: 'experience',
+    number: 5,
+    suffix: '+',
+    label: (
+      <>
+        Years <br /> Experience
+      </>
+    ),
+    icon: '⚡',
+    desc: 'In social media marketing',
+  },
 ]
 
 const Stats = () => {
@@ -27,7 +38,7 @@ const Stats = () => {
         >
           {stats.map((stat, i) => (
             <motion.div
-              key={stat.label}
+              key={stat.id || i}
               className="stats__card glass-card"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -65,14 +76,14 @@ const Stats = () => {
         {/* Marquee band */}
         <div className="stats__marquee">
           <div className="stats__marquee-track">
-            {['YouTube Ads', 'Instagram Reels', 'Facebook Ads', 'Brand Films', 'Product Videos', 'Testimonials', 'UGC Content'].map((item, i) => (
+            {['Social Media Management', 'Instagram Reels', 'Facebook Ads', 'Content Strategy', 'Reel Production', 'Lead Generation', 'UGC Content'].map((item, i) => (
               <React.Fragment key={i}>
                 <span className="stats__marquee-item">{item}</span>
                 <span className="stats__marquee-dot">✦</span>
               </React.Fragment>
             ))}
             {/* Duplicate for infinite loop */}
-            {['YouTube Ads', 'Instagram Reels', 'Facebook Ads', 'Brand Films', 'Product Videos', 'Testimonials', 'UGC Content'].map((item, i) => (
+            {['Social Media Management', 'Instagram Reels', 'Facebook Ads', 'Content Strategy', 'Reel Production', 'Lead Generation', 'UGC Content'].map((item, i) => (
               <React.Fragment key={`dup-${i}`}>
                 <span className="stats__marquee-item">{item}</span>
                 <span className="stats__marquee-dot">✦</span>

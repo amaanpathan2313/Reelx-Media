@@ -181,185 +181,162 @@ const PhotoResults = () => {
         >
           <div className="photo-results__badge">
             <span className="photo-results__badge-icon">📊</span>
-            <span>Campaign Proof Gallery</span>
+            <span>CAMPAIGN PERFORMANCE</span>
           </div>
           <h2 className="photo-results__title">
-            Live Ad Manager <span className="gradient-text">Results & Proof</span>
+            Real Campaigns <br />
+            <span className="gradient-text">Real Results</span>
           </h2>
           <p className="photo-results__subtitle">
-            Explore campaign result screenshots showcasing verified reach, leads, and cost per result.
+            See how ReelX Media turns strategic marketing into measurable business growth through reach, leads, engagement, and conversions.
           </p>
         </motion.div>
 
-        {/* SINGLE HORIZONTAL BOX CONTAINER */}
-        <motion.div
-          className="photo-results__horizontal-card"
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {/* Top Control Bar */}
-          <div className="photo-results__top-bar">
-            <div className="photo-results__top-info">
-              <span className="photo-results__live-dot" />
-              <span className="photo-results__top-title">Verified Campaign Screenshots</span>
-              <span className="photo-results__counter-pill">
-                {currentIndex + 1} / {photoResultsData.length}
-              </span>
-            </div>
-
-            {/* Controls: Play/Pause indicator & Nav Arrows */}
-            <div className="photo-results__nav-buttons">
-              <button
-                className={`photo-results__autoplay-btn ${isAutoPlay ? 'photo-results__autoplay-btn--active' : 'photo-results__autoplay-btn--paused'}`}
-                onClick={() => setIsAutoPlay(!isAutoPlay)}
-                title={isAutoPlay ? 'Auto-scrolling every 3s (Click to pause)' : 'Slider stopped (Click to resume)'}
-                aria-label={isAutoPlay ? 'Pause auto slider' : 'Resume auto slider'}
-              >
-                {isAutoPlay ? (
-                  <>
-                    <span className="photo-results__pulse-dot" />
-                    <span className="photo-results__autoplay-text">Auto (3s)</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                      <rect x="6" y="4" width="4" height="16" rx="1" />
-                      <rect x="14" y="4" width="4" height="16" rx="1" />
-                    </svg>
-                  </>
-                ) : (
-                  <>
-                    <span className="photo-results__autoplay-text">Stopped</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                      <polygon points="6 4 18 12 6 20 6 4" />
-                    </svg>
-                  </>
-                )}
-              </button>
-
-              <button
-                className="photo-results__nav-btn"
-                onClick={() => handleNavArrow('left')}
-                aria-label="Previous photo"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-              <button
-                className="photo-results__nav-btn"
-                onClick={() => handleNavArrow('right')}
-                aria-label="Next photo"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
-            </div>
+      {/* SINGLE HORIZONTAL BOX CONTAINER */}
+      <motion.div
+        className="photo-results__horizontal-card"
+        initial={{ opacity: 0, y: 40 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        {/* Top Control Bar */}
+        <div className="photo-results__top-bar">
+          <div className="photo-results__top-info">
+            <span className="photo-results__live-dot" />
+            <span className="photo-results__top-title">Verified Campaign Screenshots</span>
+            <span className="photo-results__counter-pill">
+              {currentIndex + 1} / {photoResultsData.length}
+            </span>
           </div>
 
-          {/* Photo Boxes Layout Track */}
-          <div className="photo-results__layout" ref={scrollRef}>
-            {photoResultsData.map((item, index) => (
-              <div
-                key={item.id}
-                className={`photo-results__box ${activePhotoId === item.id ? 'photo-results__box--active' : ''}`}
-                onClick={() => handleCardClick(item, index)}
-                role="button"
-                tabIndex={0}
-                title={isAutoPlay ? 'Click image to stop auto-scroll' : `Proof #${index + 1}`}
-              >
-                {/* Photo Tag Header */}
-                <div className="photo-results__tag-row">
-                  <div className="photo-results__tag">
-                    <span className="photo-results__dot" />
-                    Proof #{index + 1} • {item.category}
-                  </div>
-                  {!isAutoPlay && activePhotoId === item.id && (
-                    <span className="photo-results__stopped-badge">
-                      ❚❚ Stopped
-                    </span>
-                  )}
-                </div>
+          {/* Controls: Nav Arrows */}
+          <div className="photo-results__nav-buttons">
 
-                {/* Photo Container */}
-                <div className="photo-results__img-wrapper">
-                  <img
-                    src={item.imgUrl}
-                    alt={item.title}
-                    className="photo-results__img"
-                    onError={(e) => {
-                      if (item.fallbackUrl && e.target.src !== item.fallbackUrl) {
-                        e.target.onerror = null
-                        e.target.src = item.fallbackUrl
-                      }
-                    }}
-                  />
-                  {/* Subtle click hint & expand button */}
-                  <div className="photo-results__img-overlay">
-                    <span className="photo-results__click-hint">
-                      {isAutoPlay ? 'Click to stop' : 'Stopped'}
-                    </span>
-                    <button
-                      className="photo-results__expand-btn"
-                      onClick={(e) => handleOpenModal(e, item)}
-                      title="View full-size screenshot"
-                      aria-label="View full-size screenshot"
-                    >
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                      </svg>
-                      <span>Zoom</span>
-                    </button>
-                  </div>
+            <button
+              className="photo-results__nav-btn"
+              onClick={() => handleNavArrow('left')}
+              aria-label="Previous photo"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              className="photo-results__nav-btn"
+              onClick={() => handleNavArrow('right')}
+              aria-label="Next photo"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Photo Boxes Layout Track */}
+        <div className="photo-results__layout" ref={scrollRef}>
+          {photoResultsData.map((item, index) => (
+            <div
+              key={item.id}
+              className={`photo-results__box ${activePhotoId === item.id ? 'photo-results__box--active' : ''}`}
+              onClick={() => handleCardClick(item, index)}
+              role="button"
+              tabIndex={0}
+              title={isAutoPlay ? 'Click image to stop auto-scroll' : `Proof #${index + 1}`}
+            >
+              {/* Photo Tag Header */}
+              <div className="photo-results__tag-row">
+                <div className="photo-results__tag">
+                  <span className="photo-results__dot" />
+                  Proof #{index + 1} • {item.category}
+                </div>
+                {!isAutoPlay && activePhotoId === item.id && (
+                  <span className="photo-results__stopped-badge">
+                    ❚❚ Stopped
+                  </span>
+                )}
+              </div>
+
+              {/* Photo Container */}
+              <div className="photo-results__img-wrapper">
+                <img
+                  src={item.imgUrl}
+                  alt={item.title}
+                  className="photo-results__img"
+                  onError={(e) => {
+                    if (item.fallbackUrl && e.target.src !== item.fallbackUrl) {
+                      e.target.onerror = null
+                      e.target.src = item.fallbackUrl
+                    }
+                  }}
+                />
+                {/* Subtle click hint & expand button */}
+                <div className="photo-results__img-overlay">
+                  <span className="photo-results__click-hint">
+                    {isAutoPlay ? 'Click to stop' : 'Stopped'}
+                  </span>
+                  <button
+                    className="photo-results__expand-btn"
+                    onClick={(e) => handleOpenModal(e, item)}
+                    title="View full-size screenshot"
+                    aria-label="View full-size screenshot"
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                    <span>Zoom</span>
+                  </button>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+
+      {/* Lightbox Zoom Modal */ }
+  <AnimatePresence>
+    {selectedPhoto && (
+      <motion.div
+        className="photo-results__modal-backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setSelectedPhoto(null)}
+      >
+        <motion.div
+          className="photo-results__modal-content"
+          initial={{ scale: 0.9, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.9, opacity: 0, y: 20 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="photo-results__modal-header">
+            <div className="photo-results__modal-title-wrap">
+              <span className="photo-results__modal-tag">Verified Proof</span>
+              <h3 className="photo-results__modal-title">{selectedPhoto.title}</h3>
+            </div>
+            <button
+              className="photo-results__modal-close"
+              onClick={() => setSelectedPhoto(null)}
+              aria-label="Close image preview"
+            >
+              ✕
+            </button>
+          </div>
+          <div className="photo-results__modal-img-wrap">
+            <img
+              src={selectedPhoto.imgUrl}
+              alt={selectedPhoto.title}
+              className="photo-results__modal-img"
+            />
           </div>
         </motion.div>
-      </div>
-
-      {/* Lightbox Zoom Modal */}
-      <AnimatePresence>
-        {selectedPhoto && (
-          <motion.div
-            className="photo-results__modal-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedPhoto(null)}
-          >
-            <motion.div
-              className="photo-results__modal-content"
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="photo-results__modal-header">
-                <div className="photo-results__modal-title-wrap">
-                  <span className="photo-results__modal-tag">Verified Proof</span>
-                  <h3 className="photo-results__modal-title">{selectedPhoto.title}</h3>
-                </div>
-                <button
-                  className="photo-results__modal-close"
-                  onClick={() => setSelectedPhoto(null)}
-                  aria-label="Close image preview"
-                >
-                  ✕
-                </button>
-              </div>
-              <div className="photo-results__modal-img-wrap">
-                <img
-                  src={selectedPhoto.imgUrl}
-                  alt={selectedPhoto.title}
-                  className="photo-results__modal-img"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
+      </motion.div>
+    )}
+  </AnimatePresence>
+    </section >
   )
 }
 

@@ -1,48 +1,52 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import logo6 from '../../assets/client-logo/6.png'
+import logo1 from '../../assets/client-logo/1.png'
+import logo4 from '../../assets/client-logo/4.png'
+import logoB7Studio from '../../assets/client-logo/b7-studio.png'
 import './Testimonials.css'
 
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Mitchell',
-    role: 'CEO, FitLife Supplements',
-    avatar: '👩‍💼',
-    color: '#8b5cf6',
+    name: 'Rehan Adhikari',
+    role: 'Founder, Welcome Home – New Mumbai',
+    logo: logo6,
+    color: '#06b6d4',
     rating: 5,
-    text: 'ReelX Media completely transformed our video marketing. Our YouTube ads went from 1.2x ROAS to 11.9x in just 2 months. The team understands both creativity and data — a rare combination that actually moves the needle.',
-    metric: '11.9x ROAS',
+    text: 'ReelX Media has helped us generate quality leads for our Sai Namah real estate project. Their marketing strategy and content approach have brought valuable visibility and potential buyers to our project. Great experience working with the team!',
+    metric: 'Quality Leads',
   },
   {
     id: 2,
-    name: 'James Chen',
-    role: 'Founder, TechFlow SaaS',
-    avatar: '👨‍💻',
-    color: '#06b6d4',
+    name: "Nupur Ma'am",
+    role: 'Co-Founder, Trinity Stays',
+    logo: logo1,
+    color: '#8b5cf6',
     rating: 5,
-    text: 'We were skeptical about video at first, but ReelX proved us completely wrong. Our monthly revenue jumped from $12K to $74K in 4 months. The scripts they wrote captured our value proposition better than we ever could.',
-    metric: '+520% Revenue',
+    text: "Since partnering with ReelX Media, our business has transformed completely. All five of our properties now achieve full occupancy every month, with demand sometimes exceeding our availability. Their marketing and content strategies have made a huge difference to our growth. We're extremely happy with the results and the partnership!",
+    metric: '100% Occupancy',
   },
   {
     id: 3,
-    name: 'Priya Sharma',
-    role: 'CMO, LuxHome Decor',
-    avatar: '👩‍🎨',
+    name: 'Vipul Kocchar',
+    role: 'Red Wings Resort & Lawns',
+    logo: logo4,
     color: '#f97316',
     rating: 5,
-    text: 'The attention to detail is incredible. Every video feels premium, on-brand, and more importantly — it converts. Our sales went from $8K to $35K monthly. ReelX is now our permanent content partner.',
-    metric: '+340% Sales',
+    text: "ReelX Media has helped Red Wings Resort & Lawns attract more guests and generate significantly more bookings. Over the past six months, their marketing strategies and consistent efforts have brought us more business than we initially expected. We're extremely happy with the growth and results!",
+    metric: 'More Bookings',
   },
   {
     id: 4,
-    name: 'Marcus Johnson',
-    role: 'E-commerce Director, Urban Style',
-    avatar: '👨‍🎯',
+    name: 'Bharati Naik',
+    role: 'Founder, B7 Studio – Kharghar',
+    logo: logoB7Studio,
     color: '#ec4899',
     rating: 5,
-    text: 'We\'ve worked with multiple agencies but none delivered results like ReelX. Their UGC content strategy got us 5.6 million views and 14x ROAS. They don\'t just create content, they engineer revenue.',
-    metric: '14x ROAS',
+    text: "We had been struggling to generate consistent business despite running our salon for months. After partnering with ReelX Media, things changed significantly. Within just one month, their marketing strategies helped us generate over ₹2 lakh in business. We're extremely happy with the results and their approach!",
+    metric: '₹2 Lakh+ Revenue',
   },
 ]
 
@@ -90,8 +94,8 @@ const Testimonials = () => {
 
               {/* Author */}
               <div className="testi__author">
-                <div className="testi__avatar" style={{ background: `${testimonials[active].color}25`, border: `2px solid ${testimonials[active].color}50` }}>
-                  {testimonials[active].avatar}
+                <div className="testi__avatar" style={{ border: `2px solid ${testimonials[active].color}60` }}>
+                  <img src={testimonials[active].logo} alt={testimonials[active].name} className="testi__avatar-img" />
                 </div>
                 <div>
                   <div className="testi__name">{testimonials[active].name}</div>
@@ -128,8 +132,8 @@ const Testimonials = () => {
               style={{ '--t-color': t.color }}
               whileHover={{ y: -4 }}
             >
-              <div className="testi__card-avatar" style={{ background: `${t.color}25` }}>
-                {t.avatar}
+              <div className="testi__card-avatar" style={{ border: `1.5px solid ${t.color}50` }}>
+                <img src={t.logo} alt={t.name} className="testi__card-avatar-img" />
               </div>
               <div className="testi__card-info">
                 <div className="testi__card-name">{t.name}</div>

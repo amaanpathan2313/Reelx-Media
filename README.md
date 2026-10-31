@@ -1,7 +1,7 @@
 # ReelX Media 🚀
 
 > **Performance-driven video content creation agency.**  
-> We don't just create viral videos — we grow your revenue.
+> We don't just create videos — we grow your revenue.
 
 ![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)

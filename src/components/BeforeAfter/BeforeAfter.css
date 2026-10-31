@@ -1,6 +1,6 @@
 .before-after {
   position: relative;
-  padding: 100px 0;
+  padding: 20px 0 0 !important;
   overflow: hidden;
   z-index: 1;
 }
