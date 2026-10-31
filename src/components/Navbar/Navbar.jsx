@@ -12,6 +12,8 @@ const navLinks = [
   { label: 'Testimonials', href: '#testimonials' },
 ]
 
+const whatsappUrl = `https://wa.me/919321434984?text=${encodeURIComponent('Hii , Amaan Pathan')}`
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -54,7 +56,7 @@ const Navbar = () => {
         {/* CTA */}
         <div className="navbar__actions">
           <a
-            href="https://wa.me/919321434984"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary navbar__cta"
@@ -103,7 +105,7 @@ const Navbar = () => {
               </motion.a>
             ))}
             <a
-              href="https://wa.me/919321434984"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

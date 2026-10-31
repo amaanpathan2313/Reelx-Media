@@ -69,6 +69,8 @@ const socialLinks = [
 ]
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="footer" id="footer">
       {/* Background Glow Overlays */}
@@ -154,7 +156,7 @@ const Footer = () => {
         {/* Bottom Legal / Copyright Bar */}
         <div className="footer__bottom">
           <p className="footer__copy">
-            © 2021 ReelXMedia. All rights reserved.
+            © 2021 - {currentYear} ReelXMedia. All rights reserved.
           </p>
 
           <div className="footer__legal">

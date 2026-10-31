@@ -155,13 +155,17 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 40px;
+  width: 100%;
 }
 
 .cta__input-wrap {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 12px;
   width: 100%;
   max-width: 560px;
+  margin: 0 auto;
 }
 
 .cta__input {
@@ -189,7 +193,10 @@
 
 .cta__submit {
   white-space: nowrap;
-  padding: 16px 28px;
+  padding: 16px 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cta__privacy {
@@ -239,8 +246,8 @@
 @media (max-width: 640px) {
   .cta__inner { padding: 48px 20px; }
   .cta__br { display: none; }
-  .cta__input-wrap { flex-direction: column; }
-  .cta__submit { width: 100%; justify-content: center; }
+  .cta__input-wrap { flex-direction: column; align-items: center; }
+  .cta__submit { width: auto; max-width: 100%; justify-content: center; }
   .cta__trust { gap: 20px; }
   .cta__trust-divider { display: none; }
 }

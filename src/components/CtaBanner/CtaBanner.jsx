@@ -65,7 +65,7 @@ const CtaBanner = () => {
           {/* Form */}
           <form className="cta__form" onSubmit={handleSubmit} id="cta-form">
             <div className="cta__input-wrap">
-              <input
+              {/* <input
                 type="email"
                 className="cta__input"
                 placeholder="Enter your email address..."
@@ -73,7 +73,7 @@ const CtaBanner = () => {
                 onChange={e => setEmail(e.target.value)}
                 required
                 id="cta-email"
-              />
+              /> */}
               <button type="submit" className="cta__submit btn-primary" id="cta-submit-btn">
                 {submitted ? '✓ Sent!' : 'Book Free Call'}
                 {!submitted && (
@@ -94,7 +94,7 @@ const CtaBanner = () => {
             </div>
             <div className="cta__trust-divider" />
             <div className="cta__trust-item">
-              <span className="cta__trust-num">$50M+</span>
+              <span className="cta__trust-num">₹50M+</span>
               <span className="cta__trust-label">Revenue Generated</span>
             </div>
             <div className="cta__trust-divider" />
