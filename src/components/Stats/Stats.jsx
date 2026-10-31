@@ -13,9 +13,10 @@ const stats = [
     number: 5,
     suffix: '+',
     label: (
-      <>
-        Years <br /> Experience
-      </>
+      <span className="stats__label-experience">
+        <span className="stats__label-line">Years</span>{' '}
+        <span className="stats__label-line">Experience</span>
+      </span>
     ),
     icon: '⚡',
     desc: 'In social media marketing',
@@ -38,7 +39,7 @@ const Stats = () => {
         >
           {stats.map((stat, i) => (
             <motion.div
-              key={stat.id || i}
+              key={stat.label}
               className="stats__card glass-card"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}

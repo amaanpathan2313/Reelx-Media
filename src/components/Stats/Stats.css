@@ -115,6 +115,14 @@
   line-height: 1.25;
 }
 
+.stats__label-experience {
+  white-space: nowrap;
+}
+
+.stats__label-line {
+  display: inline;
+}
+
 .stats__desc {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
@@ -205,6 +213,12 @@
   }
   .stats__orb {
     display: none;
+  }
+  .stats__label-experience {
+    white-space: normal;
+  }
+  .stats__label-line {
+    display: block;
   }
 }
 
