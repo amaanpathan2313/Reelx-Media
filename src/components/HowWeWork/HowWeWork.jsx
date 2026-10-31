@@ -8,7 +8,6 @@ const steps = [
     num: '01',
     icon: '🎯',
     title: 'Competitor Analysis',
-    desc: 'Understand your competitors’ strategies, identify market gaps, and discover opportunities to attract more customers and increase sales.',
     color: '#8b5cf6',
     glow: 'rgba(139, 92, 246, 0.35)',
     dotColor: '#8b5cf6',
@@ -16,8 +15,11 @@ const steps = [
   {
     num: '02',
     icon: '📋',
-    title: 'Strategy Building',
-    desc: 'We create a monthly content strategy with detailed planning, engaging scripts, and a clear shoot plan tailored to your business goals.',
+    title: (
+      <>
+        Strategy <br /> Building
+      </>
+    ),
     color: '#06b6d4',
     glow: 'rgba(6, 182, 212, 0.35)',
     dotColor: '#06b6d4',
@@ -26,7 +28,6 @@ const steps = [
     num: '03',
     icon: '🎥',
     title: 'Professional Videography',
-    desc: 'We professionally direct every shoot using 4K cameras and professional equipment to create compelling videos that capture attention and attract potential customers.',
     color: '#f43f5e',
     glow: 'rgba(244, 63, 94, 0.35)',
     dotColor: '#f43f5e',
@@ -34,8 +35,11 @@ const steps = [
   {
     num: '04',
     icon: '⚡',
-    title: 'Content Editing',
-    desc: 'We transform raw footage into engaging videos with professional editing, smooth transitions, captivating visuals, and attention-grabbing hooks.',
+    title: (
+      <>
+        Content <br /> Editing
+      </>
+    ),
     color: '#a855f7',
     glow: 'rgba(168, 85, 247, 0.35)',
     dotColor: '#a855f7',
@@ -44,7 +48,6 @@ const steps = [
     num: '05',
     icon: '📱',
     title: 'Social Media Management',
-    desc: 'We manage your social media presence through consistent posting, strategic content, and professional brand presentation to build trust and turn followers into customers.',
     color: '#22d3ee',
     glow: 'rgba(34, 211, 238, 0.35)',
     dotColor: '#22d3ee',
@@ -53,7 +56,6 @@ const steps = [
     num: '06',
     icon: '📈',
     title: 'Monthly Growth Reporting',
-    desc: 'We track organic growth, audience engagement, reach, and leads generated so you can measure performance and make smarter marketing decisions.',
     color: '#f59e0b',
     glow: 'rgba(245, 158, 11, 0.35)',
     dotColor: '#f59e0b',
@@ -127,7 +129,6 @@ const HowWeWork = () => {
                     <span className="hww__icon">{step.icon}</span>
                   </div>
                   <h3 className="hww__title">{step.title}</h3>
-                  <p className="hww__desc">{step.desc}</p>
                   <div
                     className="hww__glow"
                     style={{

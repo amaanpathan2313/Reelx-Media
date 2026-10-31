@@ -10,7 +10,6 @@ const services = [
     icon: '🎬',
     tag: 'Creation',
     title: 'Content Creation',
-    desc: 'We create engaging content that grabs attention, builds brand trust, and turns viewers into customers.',
     features: ['Attention-grabbing visuals', 'Brand trust building', 'Viewer-to-customer conversion', 'Cinematic production'],
     color: 'linear-gradient(135deg, #ff0000 0%, #8b5cf6 100%)',
     bgColor: 'rgba(255, 0, 0, 0.08)',
@@ -21,7 +20,6 @@ const services = [
     icon: '📱',
     tag: 'Growth',
     title: 'Organic Social Media Growth',
-    desc: 'We help your brand reach more people, gain loyal followers, and turn organic engagement into real business growth.',
     features: ['Broader brand reach', 'Loyal follower growth', 'Real engagement & community', 'Sustainable organic scale'],
     color: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
     bgColor: 'rgba(139, 92, 246, 0.08)',
@@ -32,7 +30,6 @@ const services = [
     icon: '🎯',
     tag: 'Sales',
     title: 'Lead Generation',
-    desc: 'We bring high-quality leads directly to your WhatsApp, connecting you with potential customers ready to grow your sales.',
     features: ['Direct-to-WhatsApp leads', 'High-intent prospects', 'Ready-to-buy customer flow', 'Sales conversion focus'],
     color: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
     bgColor: 'rgba(16, 185, 129, 0.08)',
@@ -43,7 +40,6 @@ const services = [
     icon: '🤝',
     tag: 'Partnerships',
     title: 'Influencer Collaborations',
-    desc: 'We connect your brand with the right influencers to reach more customers, build trust, and boost sales.',
     features: ['Targeted influencer matching', 'Audience reach expansion', 'Brand credibility & trust', 'Sales-boosting campaigns'],
     color: 'linear-gradient(135deg, #f97316 0%, #ec4899 100%)',
     bgColor: 'rgba(249, 115, 22, 0.08)',
@@ -53,8 +49,7 @@ const services = [
     id: 'ugc',
     icon: '🎭',
     tag: 'UGC',
-    title: 'UGC (User-Generated Content)',
-    desc: 'We create authentic, relatable content that builds customer trust, boosts engagement, and turns viewers into buyers.',
+    title: 'User-Generated Content (UGC)',
     features: ['Authentic & relatable videos', 'Customer trust & proof', 'Higher engagement rates', 'Conversion-focused creators'],
     color: 'linear-gradient(135deg, #fbbf24 0%, #f97316 100%)',
     bgColor: 'rgba(251, 191, 36, 0.08)',
@@ -65,7 +60,6 @@ const services = [
     icon: '🧠',
     tag: 'Strategy',
     title: 'Consulting & Strategy',
-    desc: 'We build data-driven strategies to strengthen your brand, attract the right audience, and turn business goals into measurable growth and sales.',
     features: ['Data-driven roadmaps', 'Target audience alignment', 'Brand positioning', 'Measurable revenue growth'],
     color: 'linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)',
     bgColor: 'rgba(139, 92, 246, 0.08)',
@@ -76,6 +70,10 @@ const services = [
 const Services = () => {
   const [activeService, setActiveService] = useState(null)
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+
+  const handleCardClick = (id) => {
+    setActiveService((prev) => (prev === id ? null : id))
+  }
 
   return (
     <section className="services section" id="services" ref={ref}>
@@ -121,8 +119,15 @@ const Services = () => {
                     '--service-bg': service.bgColor,
                     '--service-border': service.borderColor,
                   }}
-                  onMouseEnter={() => setActiveService(service.id)}
-                  onMouseLeave={() => setActiveService(null)}
+                  onClick={() => handleCardClick(service.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      handleCardClick(service.id)
+                    }
+                  }}
                 >
                   {/* Top */}
                   <div className="services__card-top">
@@ -134,7 +139,6 @@ const Services = () => {
 
                   {/* Content */}
                   <h3 className="services__title">{service.title}</h3>
-                  <p className="services__desc">{service.desc}</p>
 
                   {/* Features */}
                   <AnimatePresence>
@@ -144,7 +148,8 @@ const Services = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        onClick={(e) => e.stopPropagation()}
                       >
                         {service.features.map(feat => (
                           <li key={feat} className="services__feature">
@@ -159,9 +164,9 @@ const Services = () => {
                   {/* Arrow */}
                   <div className="services__arrow">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                      <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
-                    <span>Learn more</span>
+                    <span>{activeService === service.id ? 'Show less' : 'Learn more'}</span>
                   </div>
 
                   {/* Gradient line */}
