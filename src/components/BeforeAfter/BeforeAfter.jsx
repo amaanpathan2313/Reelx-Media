@@ -12,7 +12,7 @@ const video1After = getCloudinaryVideo('before_after_1.2', '1792927771')
 const video2Before = getCloudinaryVideo('before_after_2.1', '1792927775')
 const video2After = getCloudinaryVideo('before_after_2.2', '1792927772')
 const video3Before = getCloudinaryVideo('before_after_3.1', '1792927765')
-const video3After = getCloudinaryVideo('before_after_3.2', '1792927776')
+const video3After = getCloudinaryVideo('before_after_3.2', '1793518145')
 
 const videoBoxes = [
   {

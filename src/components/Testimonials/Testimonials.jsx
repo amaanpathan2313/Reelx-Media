@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import logo6 from '../../assets/client-logo/6.png'
@@ -52,7 +52,19 @@ const testimonials = [
 
 const Testimonials = () => {
   const [active, setActive] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+
+  // Auto-slide reviews every 2 seconds
+  useEffect(() => {
+    if (isPaused) return
+
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % testimonials.length)
+    }, 2000)
+
+    return () => clearInterval(timer)
+  }, [isPaused])
 
   return (
     <section className="testi section" id="testimonials" ref={ref}>
@@ -78,15 +90,17 @@ const Testimonials = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.2, duration: 0.7 }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
               className="testi__main"
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.4 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.45, ease: 'easeInOut' }}
             >
               {/* Quote */}
               <div className="testi__quote-icon">❝</div>
@@ -97,7 +111,7 @@ const Testimonials = () => {
                 <div className="testi__avatar" style={{ border: `2px solid ${testimonials[active].color}60` }}>
                   <img src={testimonials[active].logo} alt={testimonials[active].name} className="testi__avatar-img" />
                 </div>
-                <div>
+                <div className="testi__author-meta">
                   <div className="testi__name">{testimonials[active].name}</div>
                   <div className="testi__role">{testimonials[active].role}</div>
                 </div>
@@ -120,7 +134,11 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Selector cards */}
-        <div className="testi__cards">
+        <div
+          className="testi__cards"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {testimonials.map((t, i) => (
             <motion.button
               key={t.id}

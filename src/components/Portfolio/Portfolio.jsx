@@ -3,71 +3,41 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './Portfolio.css'
 
-import promo1 from '../../assets/promotional/1.mp4'
-import promo2 from '../../assets/promotional/2.mp4'
-import promo3 from '../../assets/promotional/3.mp4'
-import promo4 from '../../assets/promotional/4.mp4'
-import promo5 from '../../assets/promotional/5.mp4'
-import promo6 from '../../assets/promotional/6.mp4'
-// import promo7 from '../../assets/promotional/7.mp4' // >100MB (exceeds GitHub limit)
-import promo8 from '../../assets/promotional/8.mp4'
-import promo9 from '../../assets/promotional/9.mp4'
+const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || 'gkl3exsq'
+const getCloudinaryVideo = (publicId) =>
+  `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/${publicId}.mp4`
 
-import resort2 from '../../assets/resort/2.mp4'
-import resort3 from '../../assets/resort/3.mp4'
-import resort4 from '../../assets/resort/4.mp4'
-import resort5 from '../../assets/resort/5.mp4'
-import resort6 from '../../assets/resort/6.mp4'
-import resort7 from '../../assets/resort/7.mp4'
-
-import realstate1 from '../../assets/real-state/1.mp4'
-import realstate2 from '../../assets/real-state/2.mp4'
-import realstate2Bhk from '../../assets/real-state/2BHK CINEMATICS.mp4'
-// import realstate3 from '../../assets/real-state/3.mp4' // >100MB (exceeds GitHub limit)
-import realstate4 from '../../assets/real-state/4.mp4'
-import realstate4Bhk from '../../assets/real-state/4BHK cinematic.mp4'
-import realstate5 from '../../assets/real-state/5.mp4'
-// import realstate6 from '../../assets/real-state/6.mp4' // >100MB (exceeds GitHub limit)
-import realstate7 from '../../assets/real-state/7.mp4'
-
-// Demo video placeholder for >100MB files
-const demoVideo = 'https://res.cloudinary.com/gkl3exsq/video/upload/v1792927651/samples/cld-sample-video.mp4'
-
-const categories = ['All', 'Resorts / Villas', 'Real State', 'Health Care', 'Promotional Videos']
+const categories = ['All', 'Resorts / Villas', 'Real Estate', 'Promotional Videos']
 
 const portfolioItems = [
-  { id: 'p1', title: 'Brand Promo Video 1', category: 'Promotional Videos', color: '#8b5cf6', emoji: '🎬', videoUrl: promo1 },
-  { id: 'r2', title: 'Resort Video 1', category: 'Resorts / Villas', color: '#10b981', emoji: '🎬', videoUrl: resort2 },
-  { id: 'rs1', title: 'Real Estate Video 1', category: 'Real State', color: '#10b981', emoji: '🎬', videoUrl: realstate1 },
-  
-  { id: 'p2', title: 'Brand Promo Video 2', category: 'Promotional Videos', color: '#ec4899', emoji: '🎬', videoUrl: promo2 },
-  { id: 'r3', title: 'Resort Video 2', category: 'Resorts / Villas', color: '#06b6d4', emoji: '🎬', videoUrl: resort3 },
-  { id: 'rs2', title: 'Real Estate Video 2', category: 'Real State', color: '#06b6d4', emoji: '🎬', videoUrl: realstate2 },
-  
-  { id: 'p3', title: 'Brand Promo Video 3', category: 'Promotional Videos', color: '#06b6d4', emoji: '🎬', videoUrl: promo3 },
-  { id: 'r4', title: 'Resort Video 3', category: 'Resorts / Villas', color: '#8b5cf6', emoji: '🎬', videoUrl: resort4 },
-  { id: 'rs3', title: '2BHK Cinematics', category: 'Real State', color: '#8b5cf6', emoji: '🎬', videoUrl: realstate2Bhk },
-  
-  { id: 'p4', title: 'Brand Promo Video 4', category: 'Promotional Videos', color: '#10b981', emoji: '🎬', videoUrl: promo4 },
-  { id: 'r5', title: 'Resort Video 4', category: 'Resorts / Villas', color: '#ec4899', emoji: '🎬', videoUrl: resort5 },
-  { id: 'rs4', title: 'Real Estate Video 3', category: 'Real State', color: '#ec4899', emoji: '🎬', videoUrl: demoVideo },
-  
-  { id: 'p5', title: 'Brand Promo Video 5', category: 'Promotional Videos', color: '#f97316', emoji: '🎬', videoUrl: promo5 },
-  { id: 'r6', title: 'Resort Video 5', category: 'Resorts / Villas', color: '#fbbf24', emoji: '🎬', videoUrl: resort6 },
-  { id: 'rs5', title: 'Real Estate Video 4', category: 'Real State', color: '#fbbf24', emoji: '🎬', videoUrl: realstate4 },
-  
-  { id: 'p6', title: 'Brand Promo Video 6', category: 'Promotional Videos', color: '#fbbf24', emoji: '🎬', videoUrl: promo6 },
-  { id: 'r7', title: 'Resort Video 6', category: 'Resorts / Villas', color: '#f97316', emoji: '🎬', videoUrl: resort7 },
-  { id: 'rs6', title: '4BHK Cinematics', category: 'Real State', color: '#f97316', emoji: '🎬', videoUrl: realstate4Bhk },
-  
-  { id: 'p7', title: 'Brand Promo Video 7', category: 'Promotional Videos', color: '#4f46e5', emoji: '🎬', videoUrl: demoVideo },
-  { id: 'rs7', title: 'Real Estate Video 5', category: 'Real State', color: '#4f46e5', emoji: '🎬', videoUrl: realstate5 },
-  
-  { id: 'p8', title: 'Brand Promo Video 8', category: 'Promotional Videos', color: '#ef4444', emoji: '🎬', videoUrl: promo8 },
-  { id: 'rs8', title: 'Real Estate Video 6', category: 'Real State', color: '#ef4444', emoji: '🎬', videoUrl: demoVideo },
-  
-  { id: 'p9', title: 'Brand Promo Video 9', category: 'Promotional Videos', color: '#a78bfa', emoji: '🎬', videoUrl: promo9 },
-  { id: 'rs9', title: 'Real Estate Video 7', category: 'Real State', color: '#a78bfa', emoji: '🎬', videoUrl: realstate7 },
+  // Top showcase items (balanced mix across all categories)
+  { id: 'r1', title: 'Premium Farm Stay Experience', category: 'Resorts / Villas', color: '#10b981', emoji: '🌴', videoUrl: getCloudinaryVideo('premium_farm_stay') },
+  { id: 'rs1', title: 'Terra Gold Luxury Project', category: 'Real Estate', color: '#8b5cf6', emoji: '🏢', videoUrl: getCloudinaryVideo('terra_gold') },
+  { id: 'p1', title: 'Pizza Wala Brand Campaign', category: 'Promotional Videos', color: '#ec4899', emoji: '🍕', videoUrl: getCloudinaryVideo('pizzawala') },
+  { id: 'r2', title: 'Resort Weekend Getaway', category: 'Resorts / Villas', color: '#06b6d4', emoji: '🏖️', videoUrl: getCloudinaryVideo('trip') },
+  { id: 'rs2', title: '4 BHK Luxury Apartment Tour', category: 'Real Estate', color: '#fbbf24', emoji: '🏠', videoUrl: getCloudinaryVideo('4_bhk_add') },
+  { id: 'p2', title: 'Zorko Chat Corner Food Promo', category: 'Promotional Videos', color: '#f97316', emoji: '🍔', videoUrl: getCloudinaryVideo('zorko_chatcorner') },
+
+  // Remaining showcase items
+  { id: 'rs3', title: '2 BHK Cinematic Property Film', category: 'Real Estate', color: '#8b5cf6', emoji: '🎬', videoUrl: getCloudinaryVideo('2BHK_CINEMATICS') },
+  { id: 'r3', title: 'Luxury Villa Walkthrough', category: 'Resorts / Villas', color: '#10b981', emoji: '🏊', videoUrl: getCloudinaryVideo('0528_1') },
+  { id: 'p3', title: 'Evergreen Sweet & Farsan Ad', category: 'Promotional Videos', color: '#ec4899', emoji: '🍬', videoUrl: getCloudinaryVideo('evergreen_new_ad-5') },
+  { id: 'rs4', title: '4 BHK Cinematic Property Tour', category: 'Real Estate', color: '#4f46e5', emoji: '🎥', videoUrl: getCloudinaryVideo('4BHK_cinematic') },
+  { id: 'r4', title: 'Resort Leisure Highlights 1', category: 'Resorts / Villas', color: '#06b6d4', emoji: '🌿', videoUrl: getCloudinaryVideo('0809') },
+  { id: 'p4', title: 'Sheth Villa Luxury Ad', category: 'Promotional Videos', color: '#f97316', emoji: '✨', videoUrl: getCloudinaryVideo('SHETI_VILA_AD_FINAL') },
+  { id: 'rs5', title: '2 BHK Quick Walkthrough', category: 'Real Estate', color: '#10b981', emoji: '🔑', videoUrl: getCloudinaryVideo('2BHK_quick_tour') },
+  { id: 'r5', title: 'Resort Leisure Highlights 2', category: 'Resorts / Villas', color: '#a78bfa', emoji: '🌅', videoUrl: getCloudinaryVideo('0712') },
+  { id: 'p5', title: 'Sheth Villa Campaign Ad 3', category: 'Promotional Videos', color: '#fbbf24', emoji: '📺', videoUrl: getCloudinaryVideo('SHETI_VILA_AD_3') },
+  { id: 'rs6', title: '3 BHK Quick Property Tour', category: 'Real Estate', color: '#ec4899', emoji: '🚪', videoUrl: getCloudinaryVideo('3bhk_quick-2') },
+  { id: 'p6', title: '1500 Campaign Main Ad', category: 'Promotional Videos', color: '#4f46e5', emoji: '🚀', videoUrl: getCloudinaryVideo('1500_ad_main') },
+  { id: 'rs7', title: 'Flat 410 Property Tour', category: 'Real Estate', color: '#06b6d4', emoji: '🏙️', videoUrl: getCloudinaryVideo('fl_410') },
+  { id: 'p7', title: '2 BHK Hindi Campaign Ad', category: 'Promotional Videos', color: '#8b5cf6', emoji: '🎙️', videoUrl: getCloudinaryVideo('hindi_2bhk') },
+  { id: 'rs8', title: 'Flat 202 Property Tour', category: 'Real Estate', color: '#f97316', emoji: '🏡', videoUrl: getCloudinaryVideo('flat_202') },
+  { id: 'p8', title: '3 BHK Marathi Campaign Ad', category: 'Promotional Videos', color: '#ec4899', emoji: '📢', videoUrl: getCloudinaryVideo('marathi_3bhk') },
+  { id: 'rs9', title: 'Ghar Dekho Mumbai Campaign', category: 'Real Estate', color: '#fbbf24', emoji: '📍', videoUrl: getCloudinaryVideo('ghardekhomumbai') },
+  { id: 'p9', title: 'Sai Namah Hindi Short Ad', category: 'Promotional Videos', color: '#10b981', emoji: '⭐', videoUrl: getCloudinaryVideo('SAI_NAMAH_HINDI_15_sec') },
+  { id: 'rs10', title: 'Terra Gold Promotional Ad', category: 'Real Estate', color: '#a78bfa', emoji: '🎯', videoUrl: getCloudinaryVideo('Terra_gold_add') },
+  { id: 'p10', title: 'Sai Namah Marathi Short Ad', category: 'Promotional Videos', color: '#06b6d4', emoji: '🔥', videoUrl: getCloudinaryVideo('SAI_NAMAH_marathi_15_sec') },
 ]
 
 const Portfolio = () => {
