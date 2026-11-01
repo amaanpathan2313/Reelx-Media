@@ -22,12 +22,14 @@ const makeItem = (id, title, category, color, emoji, publicId) => ({
 })
 
 const portfolioItems = [
-  // Top showcase items (balanced mix across all categories)
+  // Top showcase items (2 from each category: Resorts, Real Estate, Salon, Promotional)
   makeItem('r1', 'Premium Farm Stay Experience', 'Resorts / Villas', '#10b981', '🌴', 'premium_farm_stay'),
   makeItem('rs1', 'Terra Gold Luxury Project', 'Real Estate', '#8b5cf6', '🏢', 'terra_gold'),
+  makeItem('s1', 'B7 Studio Official Hindi Campaign', 'Salon', '#ec4899', '✂️', 'b7_studio_ad_hindi'),
   makeItem('p1', 'Pizza Wala Brand Campaign', 'Promotional Videos', '#ec4899', '🍕', 'pizzawala'),
   makeItem('r2', 'Resort Weekend Getaway', 'Resorts / Villas', '#06b6d4', '🏖️', 'trip'),
   makeItem('rs2', '4 BHK Luxury Apartment Tour', 'Real Estate', '#fbbf24', '🏠', '4_bhk_add'),
+  makeItem('s2', 'Sounds of B7 Salon Experience', 'Salon', '#8b5cf6', '💇', 'sounds_of_b7'),
   makeItem('p2', 'Zorko Chat Corner Food Promo', 'Promotional Videos', '#f97316', '🍔', 'zorko_chatcorner'),
 
   // Remaining showcase items
@@ -53,8 +55,6 @@ const portfolioItems = [
   makeItem('r6', 'Angel Resort Luxury Showcase', 'Resorts / Villas', '#06b6d4', '🏨', 'angel_resort_ss'),
   makeItem('r7', 'Red Wings Resort & Lawns', 'Resorts / Villas', '#f97316', '🌿', 'red_wings_ss'),
   makeItem('r8', 'Romantic Villa Getaway', 'Resorts / Villas', '#ec4899', '💖', 'LOVE'),
-  makeItem('s1', 'B7 Studio Official Hindi Campaign', 'Salon', '#ec4899', '✂️', 'b7_studio_ad_hindi'),
-  makeItem('s2', 'Sounds of B7 Salon Experience', 'Salon', '#8b5cf6', '💇', 'sounds_of_b7'),
   makeItem('s3', 'Ashu Hair Transformation Showcase', 'Salon', '#06b6d4', '✨', 'ashu_b-a'),
   makeItem('s4', 'B7 Studio Couple Client Review', 'Salon', '#f97316', '⭐', 'couple_review-1'),
   makeItem('s5', 'Salon Monday Special Booking Offer', 'Salon', '#10b981', '📅', 'monday_call'),
@@ -70,11 +70,12 @@ const Portfolio = () => {
     ? portfolioItems
     : portfolioItems.filter(item => item.category === activeFilter)
 
-  const displayedItems = showAll ? filtered : filtered.slice(0, 6)
+  const INITIAL_COUNT = 8
+  const displayedItems = showAll ? filtered : filtered.slice(0, INITIAL_COUNT)
 
   const handleFilterClick = (cat) => {
     setActiveFilter(cat)
-    setShowAll(false) // Reset to 6 items when filter changes
+    setShowAll(false) // Reset when filter changes
     document.querySelectorAll('video').forEach((v) => {
       if (!v.paused) v.pause()
     })
@@ -187,7 +188,7 @@ const Portfolio = () => {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          {!showAll && filtered.length > 6 && (
+          {!showAll && filtered.length > INITIAL_COUNT && (
             <button className="btn-outline" id="portfolio-view-all" onClick={() => setShowAll(true)}>
               View All Case Studies →
             </button>

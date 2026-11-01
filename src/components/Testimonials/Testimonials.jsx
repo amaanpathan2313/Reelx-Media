@@ -53,18 +53,18 @@ const testimonials = [
 const Testimonials = () => {
   const [active, setActive] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 })
 
-  // Auto-slide reviews every 2 seconds
+  // Auto-slide reviews every 2 seconds (only when visible in viewport)
   useEffect(() => {
-    if (isPaused) return
+    if (isPaused || !inView) return
 
     const timer = setInterval(() => {
       setActive((prev) => (prev + 1) % testimonials.length)
     }, 2000)
 
     return () => clearInterval(timer)
-  }, [isPaused])
+  }, [isPaused, inView])
 
   return (
     <section className="testi section" id="testimonials" ref={ref}>

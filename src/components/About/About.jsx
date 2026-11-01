@@ -28,10 +28,11 @@ const About = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <Tilt
+            tiltEnable={typeof window !== 'undefined' && window.innerWidth >= 768}
             tiltMaxAngleX={8}
             tiltMaxAngleY={8}
             perspective={1000}
-            glareEnable={true}
+            glareEnable={typeof window !== 'undefined' && window.innerWidth >= 768}
             glareMaxOpacity={0.1}
             glareColor="#8b5cf6"
             className="about__tilt"

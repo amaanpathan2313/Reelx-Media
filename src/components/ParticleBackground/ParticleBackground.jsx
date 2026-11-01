@@ -5,7 +5,13 @@ const ParticleBackground = () => {
   const canvasRef = useRef(null)
 
   useEffect(() => {
+    // On mobile devices (<768px), disable canvas animation loop to save 100% CPU/battery on budget devices
+    if (window.innerWidth < 768) {
+      return
+    }
+
     const canvas = canvasRef.current
+    if (!canvas) return
     const ctx = canvas.getContext('2d')
     let animationId
     let particles = []
