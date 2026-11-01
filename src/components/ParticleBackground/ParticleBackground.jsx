@@ -54,21 +54,24 @@ const ParticleBackground = () => {
       }
     }
 
-    // Create particles
-    for (let i = 0; i < 120; i++) {
+    // Scale particles based on screen size (35 on mobile, 60 on desktop)
+    const particleCount = window.innerWidth < 768 ? 35 : 60
+    for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle())
     }
 
-    // Connect nearby particles
+    // Connect nearby particles (reduced threshold for performance)
+    const maxDist = window.innerWidth < 768 ? 90 : 110
     const connectParticles = () => {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
+      const len = particles.length
+      for (let i = 0; i < len; i++) {
+        for (let j = i + 1; j < len; j++) {
           const dx = particles[i].x - particles[j].x
           const dy = particles[i].y - particles[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
 
-          if (dist < 120) {
-            const opacity = (1 - dist / 120) * 0.15
+          if (dist < maxDist) {
+            const opacity = (1 - dist / maxDist) * 0.15
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
@@ -80,7 +83,9 @@ const ParticleBackground = () => {
       }
     }
 
+    let isVisible = true
     const animate = () => {
+      if (!isVisible) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach(p => { p.update(); p.draw() })
       connectParticles()
@@ -89,9 +94,22 @@ const ParticleBackground = () => {
 
     animate()
 
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        isVisible = false
+        cancelAnimationFrame(animationId)
+      } else {
+        isVisible = true
+        animationId = requestAnimationFrame(animate)
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
     return () => {
       cancelAnimationFrame(animationId)
       window.removeEventListener('resize', resize)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
   }, [])
 

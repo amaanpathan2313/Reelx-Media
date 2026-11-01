@@ -1,5 +1,5 @@
 import React from 'react'
-import logoImg from '../../assets/logo-transparent.png'
+import logoImg from '../../assets/logo-transparent.webp'
 import './Footer.css'
 
 const companyLinks = [
@@ -85,7 +85,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="footer__brand">
             <a href="#hero" className="footer__logo" aria-label="ReelX Media Home">
-              <img src={logoImg} alt="ReelX Media Logo" className="footer__logo-img" />
+              <img src={logoImg} alt="ReelX Media Logo" className="footer__logo-img" loading="lazy" decoding="async" />
             </a>
 
             <p className="footer__tagline">

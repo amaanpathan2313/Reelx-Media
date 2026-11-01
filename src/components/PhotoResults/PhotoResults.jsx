@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './PhotoResults.css'
 
-import img1 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_40_34 PM.png'
-import img2 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_40_57 PM.png'
-import img3 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_10 PM.png'
-import img4 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_19 PM.png'
-import img5 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_27 PM.png'
-import img6 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_45_14 PM.png'
+import img1 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_40_34 PM.webp'
+import img2 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_40_57 PM.webp'
+import img3 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_10 PM.webp'
+import img4 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_19 PM.webp'
+import img5 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_41_27 PM.webp'
+import img6 from '../../assets/meta results/ChatGPT Image Sep 5, 2026, 08_45_14 PM.webp'
 
 const photoResultsData = [
   // {
@@ -89,7 +89,6 @@ const PhotoResults = () => {
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.15 })
   const scrollRef = useRef(null)
   const currentIndexRef = useRef(0)
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlay, setIsAutoPlay] = useState(true)
   const [activePhotoId, setActivePhotoId] = useState(null)
   const [selectedPhoto, setSelectedPhoto] = useState(null)
@@ -103,7 +102,6 @@ const PhotoResults = () => {
 
     if (index === 0) {
       container.scrollTo({ left: 0, behavior })
-      setCurrentIndex(0)
       currentIndexRef.current = 0
       return
     }
@@ -118,7 +116,6 @@ const PhotoResults = () => {
       left: Math.max(0, targetLeft),
       behavior,
     })
-    setCurrentIndex(index)
     currentIndexRef.current = index
   }
 
@@ -142,21 +139,6 @@ const PhotoResults = () => {
     setIsAutoPlay(false)
     setActivePhotoId(item.id)
     scrollToIndex(index)
-  }
-
-  // Handle manual navigation arrows
-  const handleNavArrow = (direction) => {
-    setIsAutoPlay(false)
-    let next
-    if (direction === 'left') {
-      next =
-        (currentIndexRef.current - 1 + photoResultsData.length) %
-        photoResultsData.length
-    } else {
-      next = (currentIndexRef.current + 1) % photoResultsData.length
-    }
-    scrollToIndex(next)
-    setActivePhotoId(photoResultsData[next]?.id)
   }
 
   // Open full-screen lightbox preview
@@ -204,32 +186,6 @@ const PhotoResults = () => {
           <div className="photo-results__top-info">
             <span className="photo-results__live-dot" />
             <span className="photo-results__top-title">Verified Campaign Screenshots</span>
-            <span className="photo-results__counter-pill">
-              {currentIndex + 1} / {photoResultsData.length}
-            </span>
-          </div>
-
-          {/* Controls: Nav Arrows */}
-          <div className="photo-results__nav-buttons">
-
-            <button
-              className="photo-results__nav-btn"
-              onClick={() => handleNavArrow('left')}
-              aria-label="Previous photo"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              className="photo-results__nav-btn"
-              onClick={() => handleNavArrow('right')}
-              aria-label="Next photo"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
           </div>
         </div>
 
@@ -263,6 +219,8 @@ const PhotoResults = () => {
                   src={item.imgUrl}
                   alt={item.title}
                   className="photo-results__img"
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     if (item.fallbackUrl && e.target.src !== item.fallbackUrl) {
                       e.target.onerror = null

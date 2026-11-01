@@ -80,6 +80,15 @@ const videoBoxes = [
 const BeforeAfter = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
+  const handleVideoPlay = (e) => {
+    const currentVideo = e.target
+    document.querySelectorAll('video').forEach((v) => {
+      if (v !== currentVideo && !v.paused) {
+        v.pause()
+      }
+    })
+  }
+
   return (
     <section className="before-after section" id="before-after" ref={ref}>
       <div className="before-after__orb before-after__orb--1" />
@@ -130,12 +139,14 @@ const BeforeAfter = () => {
                   </div>
                   <video
                     src={box.videoUrl}
+                    poster={box.poster}
                     controls
                     controlsList="nodownload noplaybackrate"
                     disablePictureInPicture
                     className="before-after__video"
-                    preload="metadata"
+                    preload="none"
                     playsInline
+                    onPlay={handleVideoPlay}
                   />
                 </div>
 

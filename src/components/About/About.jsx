@@ -2,7 +2,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import Tilt from 'react-parallax-tilt'
-import logoImg from '../../assets/logo-transparent.png'
 import './About.css'
 
 const features = [

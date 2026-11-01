@@ -16,6 +16,26 @@ import Footer from './components/Footer/Footer'
 import ParticleBackground from './components/ParticleBackground/ParticleBackground'
 
 function App() {
+  // Automatically pause any currently playing video when another video starts playing
+  useEffect(() => {
+    const handleVideoPlay = (e) => {
+      const playingVideo = e.target
+      if (playingVideo && playingVideo.tagName === 'VIDEO') {
+        const allVideos = document.querySelectorAll('video')
+        allVideos.forEach((video) => {
+          if (video !== playingVideo && !video.paused) {
+            video.pause()
+          }
+        })
+      }
+    }
+
+    document.addEventListener('play', handleVideoPlay, true)
+    return () => {
+      document.removeEventListener('play', handleVideoPlay, true)
+    }
+  }, [])
+
   return (
     <>
       <div className="noise-overlay" aria-hidden="true" />

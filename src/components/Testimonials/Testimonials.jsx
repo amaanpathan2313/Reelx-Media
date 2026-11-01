@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import logo6 from '../../assets/client-logo/6.png'
-import logo1 from '../../assets/client-logo/1.png'
-import logo4 from '../../assets/client-logo/4.png'
-import logoB7Studio from '../../assets/client-logo/b7-studio.png'
+import logo6 from '../../assets/client-logo/6.webp'
+import logo1 from '../../assets/client-logo/1.webp'
+import logo4 from '../../assets/client-logo/4.webp'
+import logoB7Studio from '../../assets/client-logo/b7-studio.webp'
 import './Testimonials.css'
 
 const testimonials = [
@@ -109,7 +109,7 @@ const Testimonials = () => {
               {/* Author */}
               <div className="testi__author">
                 <div className="testi__avatar" style={{ border: `2px solid ${testimonials[active].color}60` }}>
-                  <img src={testimonials[active].logo} alt={testimonials[active].name} className="testi__avatar-img" />
+                  <img src={testimonials[active].logo} alt={testimonials[active].name} className="testi__avatar-img" loading="lazy" decoding="async" />
                 </div>
                 <div className="testi__author-meta">
                   <div className="testi__name">{testimonials[active].name}</div>
@@ -151,7 +151,7 @@ const Testimonials = () => {
               whileHover={{ y: -4 }}
             >
               <div className="testi__card-avatar" style={{ border: `1.5px solid ${t.color}50` }}>
-                <img src={t.logo} alt={t.name} className="testi__card-avatar-img" />
+                <img src={t.logo} alt={t.name} className="testi__card-avatar-img" loading="lazy" decoding="async" />
               </div>
               <div className="testi__card-info">
                 <div className="testi__card-name">{t.name}</div>

@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
-import logoImg from '../../assets/logo-transparent.png'
-import clientLogo1 from '../../assets/client-logo/1.png'
-import clientLogo4 from '../../assets/client-logo/4.png'
-import clientLogo5 from '../../assets/client-logo/5.png'
-import clientLogo6 from '../../assets/client-logo/6.png'
+import logoImg from '../../assets/logo-transparent.webp'
+import clientLogo1 from '../../assets/client-logo/1.webp'
+import clientLogo4 from '../../assets/client-logo/4.webp'
+import clientLogo5 from '../../assets/client-logo/5.webp'
+import clientLogo6 from '../../assets/client-logo/6.webp'
 import './Hero.css'
 
 const trustLogos = [
@@ -162,7 +162,7 @@ const Hero = () => {
                   className="hero__trust-avatar"
                   style={{ zIndex: trustLogos.length - index }}
                 >
-                  <img src={logo.src} alt={logo.alt} className="hero__trust-avatar-img" />
+                  <img src={logo.src} alt={logo.alt} className="hero__trust-avatar-img" decoding="async" />
                 </div>
               ))}
             </div>

@@ -3,18 +3,18 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './Brands.css'
 
-import logo1 from '../../assets/client-logo/1.png'
-import logo2 from '../../assets/client-logo/2.png'
-import logo3 from '../../assets/client-logo/3.png'
-import logo4 from '../../assets/client-logo/4.png'
-import logo5 from '../../assets/client-logo/5.png'
-import logo6 from '../../assets/client-logo/6.png'
-import logo7 from '../../assets/client-logo/7.png'
-import logo8 from '../../assets/client-logo/8.png'
-import logo9 from '../../assets/client-logo/9.png'
-import logo10 from '../../assets/client-logo/10.png'
-import logoZorko from '../../assets/client-logo/zorko.png'
-import logoB7Studio from '../../assets/client-logo/b7-studio.png'
+import logo1 from '../../assets/client-logo/1.webp'
+import logo2 from '../../assets/client-logo/2.webp'
+import logo3 from '../../assets/client-logo/3.webp'
+import logo4 from '../../assets/client-logo/4.webp'
+import logo5 from '../../assets/client-logo/5.webp'
+import logo6 from '../../assets/client-logo/6.webp'
+import logo7 from '../../assets/client-logo/7.webp'
+import logo8 from '../../assets/client-logo/8.webp'
+import logo9 from '../../assets/client-logo/9.webp'
+import logo10 from '../../assets/client-logo/10.webp'
+import logoZorko from '../../assets/client-logo/zorko.webp'
+import logoB7Studio from '../../assets/client-logo/b7-studio.webp'
 
 const brandLogos = [
   { id: 1, src: logo1, alt: 'Client logo 1' },
@@ -70,7 +70,13 @@ const Brands = () => {
               {brand.text ? (
                 <div className="brands__text-content">{brand.text}</div>
               ) : (
-                <img src={brand.src} alt={brand.alt || `Client logo ${brand.id}`} className="brands__logo-img" />
+                <img
+                  src={brand.src}
+                  alt={brand.alt || `Client logo ${brand.id}`}
+                  className="brands__logo-img"
+                  loading="lazy"
+                  decoding="async"
+                />
               )}
             </motion.div>
           ))}

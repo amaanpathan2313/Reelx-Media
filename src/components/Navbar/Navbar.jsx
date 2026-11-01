@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import logoImg from '../../assets/logo-transparent.png'
+import logoImg from '../../assets/logo-transparent.webp'
 import './Navbar.css'
 
 const navLinks = [
