@@ -23,7 +23,6 @@ const videoBoxes = [
     title: 'Client 1 — Before ReelX',
     desc: 'Unoptimized footage & low engagement',
     videoUrl: video1Before,
-    poster: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'client1-after',
@@ -33,7 +32,6 @@ const videoBoxes = [
     title: 'Client 1 — After ReelX',
     desc: 'High-converting viral strategy (+450% Revenue)',
     videoUrl: video1After,
-    poster: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'client2-before',
@@ -43,7 +41,6 @@ const videoBoxes = [
     title: 'Client 2 — Before ReelX',
     desc: 'Static images & low video reach',
     videoUrl: video2Before,
-    poster: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'client2-after',
@@ -53,7 +50,6 @@ const videoBoxes = [
     title: 'Client 2 — After ReelX',
     desc: 'Cinematic property walkthroughs (12x Leads)',
     videoUrl: video2After,
-    poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'client3-before',
@@ -63,7 +59,6 @@ const videoBoxes = [
     title: 'Client 3 — Before ReelX',
     desc: 'High ad cost & poor conversion',
     videoUrl: video3Before,
-    poster: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'client3-after',
@@ -73,7 +68,6 @@ const videoBoxes = [
     title: 'Client 3 — After ReelX',
     desc: 'Problem-solving hook ads (18x ROI)',
     videoUrl: video3After,
-    poster: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80',
   },
 ]
 
@@ -139,12 +133,11 @@ const BeforeAfter = () => {
                   </div>
                   <video
                     src={box.videoUrl}
-                    poster={box.poster}
                     controls
                     controlsList="nodownload noplaybackrate"
                     disablePictureInPicture
                     className="before-after__video"
-                    preload="none"
+                    preload="metadata"
                     playsInline
                     onPlay={handleVideoPlay}
                   />
