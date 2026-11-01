@@ -68,6 +68,8 @@ const socialLinks = [
   },
 ]
 
+const whatsappUrl = `https://wa.me/919321434984?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
+
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
@@ -108,7 +110,7 @@ const Footer = () => {
 
             {/* Call To Action Button */}
             <a
-              href="https://wa.me/919321434984"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="footer__cta-button"

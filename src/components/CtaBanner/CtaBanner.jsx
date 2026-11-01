@@ -1,21 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './CtaBanner.css'
 
-const CtaBanner = () => {
-  const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
+const whatsappUrl = `https://wa.me/919321434984?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (email) {
-      setSubmitted(true)
-      setTimeout(() => setSubmitted(false), 3000)
-      setEmail('')
-    }
-  }
+const CtaBanner = () => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
 
   return (
     <section className="cta section" id="cta" ref={ref}>
@@ -62,29 +53,24 @@ const CtaBanner = () => {
             ))}
           </div>
 
-          {/* Form */}
-          <form className="cta__form" onSubmit={handleSubmit} id="cta-form">
+          {/* CTA Action */}
+          <div className="cta__form" id="cta-form">
             <div className="cta__input-wrap">
-              {/* <input
-                type="email"
-                className="cta__input"
-                placeholder="Enter your email address..."
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-                id="cta-email"
-              /> */}
-              <button type="submit" className="cta__submit btn-primary" id="cta-submit-btn">
-                {submitted ? '✓ Sent!' : 'Book Free Call'}
-                {!submitted && (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                )}
-              </button>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta__submit btn-primary"
+                id="cta-submit-btn"
+              >
+                <span>Book Free Call</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
             </div>
             <p className="cta__privacy">🔒 No spam, ever. We respect your privacy.</p>
-          </form>
+          </div>
 
           {/* Trust row */}
           <div className="cta__trust">

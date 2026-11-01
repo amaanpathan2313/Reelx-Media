@@ -15,6 +15,8 @@ const trustLogos = [
   { id: 4, src: clientLogo4, alt: 'Client 4' },
 ]
 
+const whatsappUrl = `https://wa.me/919321434984?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
+
 const Hero = () => {
   const videoRef = useRef(null)
 
@@ -127,7 +129,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
           >
             <a
-              href="https://wa.me/919321434984"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary hero__btn-main"
