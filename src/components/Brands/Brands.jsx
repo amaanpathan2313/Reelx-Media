@@ -89,7 +89,9 @@ const Brands = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          We have helped <span className="highlight">40+ Brands</span> in the last <span className="highlight">5+ years</span>
+          We have helped <span className="highlight">40+ Brands</span>{' '}
+          <br className="brands__stats-br-mobile" />
+          in the last <span className="highlight">5+ years</span>
         </motion.div>
 
         {/* Bottom CTA */}

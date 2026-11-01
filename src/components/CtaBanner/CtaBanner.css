@@ -243,6 +243,30 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+@media (max-width: 1024px) {
+  .cta__features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: center;
+    gap: 12px 24px;
+    max-width: 540px;
+    margin: 0 auto 36px;
+    overflow-x: visible;
+  }
+
+  .cta__feature {
+    white-space: normal;
+    font-size: clamp(12px, 1.8vw, 13.5px);
+    line-height: 1.4;
+    align-items: flex-start;
+  }
+
+  .cta__feature-check {
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .cta__inner { padding: 48px 20px; }
   .cta__br { display: none; }
@@ -250,4 +274,15 @@
   .cta__submit { width: auto; max-width: 100%; justify-content: center; }
   .cta__trust { gap: 20px; }
   .cta__trust-divider { display: none; }
+}
+
+@media (max-width: 480px) {
+  .cta__features {
+    gap: 10px 14px;
+    max-width: 100%;
+  }
+
+  .cta__feature {
+    font-size: clamp(11px, 3.2vw, 12.5px);
+  }
 }

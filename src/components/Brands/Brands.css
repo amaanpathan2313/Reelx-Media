@@ -76,6 +76,10 @@
   font-weight: 700;
 }
 
+.brands__stats-br-mobile {
+  display: none;
+}
+
 /* Bottom */
 .brands__bottom {
   display: flex;
@@ -109,6 +113,20 @@
 
 @media (max-width: 768px) {
   .brands__grid { grid-template-columns: repeat(2, 1fr); padding: 24px 16px; }
+}
+
+@media (max-width: 640px) {
+  .brands__stats-line {
+    width: 95%;
+    font-size: clamp(13.5px, 4.2vw, 16px);
+    line-height: 1.6;
+    padding-top: 24px;
+    margin-bottom: 28px;
+  }
+
+  .brands__stats-br-mobile {
+    display: block;
+  }
 }
 
 @media (max-width: 480px) {

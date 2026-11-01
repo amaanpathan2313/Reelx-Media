@@ -12,7 +12,7 @@ const navLinks = [
   { label: 'Testimonials', href: '#testimonials' },
 ]
 
-const whatsappUrl = `https://wa.me/919321434984?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
+const whatsappUrl = `https://wa.me/917039469780?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)

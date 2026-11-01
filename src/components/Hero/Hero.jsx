@@ -15,7 +15,7 @@ const trustLogos = [
   { id: 4, src: clientLogo4, alt: 'Client 4' },
 ]
 
-const whatsappUrl = `https://wa.me/919321434984?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
+const whatsappUrl = `https://wa.me/917039469780?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
 
 const Hero = () => {
   const videoRef = useRef(null)

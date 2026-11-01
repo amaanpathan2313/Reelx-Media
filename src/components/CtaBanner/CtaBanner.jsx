@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import './CtaBanner.css'
 
-const whatsappUrl = `https://wa.me/919321434984?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
+const whatsappUrl = `https://wa.me/917039469780?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
 
 const CtaBanner = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
@@ -75,7 +75,7 @@ const CtaBanner = () => {
           {/* Trust row */}
           <div className="cta__trust">
             <div className="cta__trust-item">
-              <span className="cta__trust-num">500+</span>
+              <span className="cta__trust-num">40+</span>
               <span className="cta__trust-label">Happy Clients</span>
             </div>
             <div className="cta__trust-divider" />

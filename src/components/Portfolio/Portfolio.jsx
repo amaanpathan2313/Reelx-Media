@@ -9,7 +9,7 @@ const getCloudinaryVideo = (publicId) =>
 const getCloudinaryPoster = (publicId) =>
   `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/so_0,q_auto,f_auto/${publicId}.jpg`
 
-const categories = ['All', 'Resorts / Villas', 'Real Estate', 'Promotional Videos']
+const categories = ['All', 'Resorts / Villas', 'Real Estate', 'Salon', 'Promotional Videos']
 
 const makeItem = (id, title, category, color, emoji, publicId) => ({
   id,
@@ -50,6 +50,15 @@ const portfolioItems = [
   makeItem('p9', 'Sai Namah Hindi Short Ad', 'Promotional Videos', '#10b981', '⭐', 'SAI_NAMAH_HINDI_15_sec'),
   makeItem('rs10', 'Terra Gold Promotional Ad', 'Real Estate', '#a78bfa', '🎯', 'Terra_gold_add'),
   makeItem('p10', 'Sai Namah Marathi Short Ad', 'Promotional Videos', '#06b6d4', '🔥', 'SAI_NAMAH_marathi_15_sec'),
+  makeItem('r6', 'Angel Resort Luxury Showcase', 'Resorts / Villas', '#06b6d4', '🏨', 'angel_resort_ss'),
+  makeItem('r7', 'Red Wings Resort & Lawns', 'Resorts / Villas', '#f97316', '🌿', 'red_wings_ss'),
+  makeItem('r8', 'Romantic Villa Getaway', 'Resorts / Villas', '#ec4899', '💖', 'LOVE'),
+  makeItem('s1', 'B7 Studio Official Hindi Campaign', 'Salon', '#ec4899', '✂️', 'b7_studio_ad_hindi'),
+  makeItem('s2', 'Sounds of B7 Salon Experience', 'Salon', '#8b5cf6', '💇', 'sounds_of_b7'),
+  makeItem('s3', 'Ashu Hair Transformation Showcase', 'Salon', '#06b6d4', '✨', 'ashu_b-a'),
+  makeItem('s4', 'B7 Studio Couple Client Review', 'Salon', '#f97316', '⭐', 'couple_review-1'),
+  makeItem('s5', 'Salon Monday Special Booking Offer', 'Salon', '#10b981', '📅', 'monday_call'),
+  makeItem('s6', 'Behind-The-Scenes Styling Process', 'Salon', '#a78bfa', '💄', 'process-1'),
 ]
 
 const Portfolio = () => {

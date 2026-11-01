@@ -20,7 +20,7 @@ const servicesLinks = [
 const socialLinks = [
   {
     name: 'Instagram',
-    href: 'https://instagram.com',
+    href: 'https://www.instagram.com/reelxmedia_/',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -58,7 +58,7 @@ const socialLinks = [
   },
   {
     name: 'Email',
-    href: 'mailto:contact@reelxmedia.com',
+    href: 'mailto:reelxmediaofficial@gmail.com',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -68,7 +68,7 @@ const socialLinks = [
   },
 ]
 
-const whatsappUrl = `https://wa.me/919321434984?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
+const whatsappUrl = `https://wa.me/917039469780?text=${encodeURIComponent('Hi, I want to book your consultation ')}`
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
