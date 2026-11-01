@@ -96,7 +96,9 @@ const Portfolio = () => {
             Work That <span className="gradient-text">Drives Results</span>
           </h2>
           <p className="portfolio__subheading">
-            A curated selection of campaigns that generates <br /> real revenue for your business
+            A curated selection of campaigns that <br className="portfolio__br-mobile" />
+            generates <br className="portfolio__br-desktop" />
+            real revenue for your business
           </p>
         </motion.div>
 
